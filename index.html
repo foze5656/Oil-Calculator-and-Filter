@@ -95,6 +95,27 @@
             100% { transform: scale(1); }
         }
         
+        .animate-fadeIn {
+            animation: fadeInUp 0.4s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .search-highlight {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
         .btn-gold {
             background: linear-gradient(135deg, #FFD700, #FFA500);
             transition: all 0.3s ease;
@@ -149,21 +170,30 @@
             <div class="text-gray-300 space-y-2">
                 <p class="font-semibold mb-3">التصفية العامة تشمل:</p>
                 <ul class="space-y-1 text-sm">
-                    <li>• تبديل بلاكات</li>
-                    <li>• تبديل فلتر هواء</li>
-                    <li>• تبديل فلتر مكيف</li>
-                    <li>• منظف دورة البانزين</li>
-                    <li>• بخاخ التصفية</li>
-                    <li>• تبديل زيت المكينة</li>
-                    <li>• تبديل فلتر الزيت</li>
-                    <li>• برمجة علامة الخدمة (عن طريق جهاز الكومبيوتر)</li>
-                    <li>• فحص لمستوى الزيوت والسوائل (ماء راديتر - زيت السكان - زيت القير)</li>
-                    <li>• فحص لحالة المساحات والتواير</li>
-                    <li>• فحص السفايف والديسكات</li>
+                    <li>* تبديل بلاكات</li>
+                    <li>* تبديل فلتر هواء</li>
+                    <li>* تبديل فلتر مكيف</li>
+                    <li>* منظف دورة البانزين</li>
+                    <li>* بخاخ التصفية</li>
+                    <li>* تبديل زيت المكينة</li>
+                    <li>* تبديل فلتر الزيت</li>
+                    <li>* برمجة علامة الخدمة (عن طريق جهاز الكومبيوتر)</li>
+                    <li>* فحص لمستوى الزيوت والسوائل (ماء راديتر - زيت السكان - زيت القير)</li>
+                    <li>* فحص لحالة المساحات والتواير</li>
+                    <li>* فحص السفايف والديسكات</li>
                 </ul>
                 <p class="text-yellow-400 font-semibold text-center mt-4">
-                    *جميع القطع أصلية معتمدة من الوكلاء الرسمية*
+                    جميع القطع أصلية معتمدة من الوكلاء الرسمية
                 </p>
+                <p class="text-center mt-4 text-lg font-bold text-green-400" id="majorServicePrice">
+                    رسوم الخدمة مع جميع القطع المذكورة: <span id="serviceAmount">${selectedCar?.majorService || 0}</span> د.ك
+                </p>
+                <div class="text-center mt-4">
+                    <button onclick="copyMajorServiceInfo()" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg transition-colors">
+                        📋 نسخ
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -179,7 +209,6 @@
 
             <!-- المحتوى الرئيسي -->
             <div class="glass-effect rounded-2xl p-8 mb-8">
-
 
                 <!-- الخطوة 1: اختيار نوع النظام -->
                 <div id="step1" class="step">
@@ -203,13 +232,22 @@
                             ← رجوع
                         </button>
                     </div>
-                    <h2 class="text-2xl font-bold mb-4 text-center text-yellow-400">
-                        اختر سيارتك
-                    </h2>
-                    <div class="mb-4">
-                        <input type="text" id="carSearch" placeholder="ابحث عن السيارة..." 
-                               class="input-gold w-full p-4 rounded-lg text-lg">
+
+                    <h2 class="text-2xl font-bold mb-6 text-center text-yellow-400">اختر سيارتك</h2>
+
+                    <!-- مربع البحث -->
+                    <div class="mb-6 relative">
+                        <div class="relative">
+                            <input type="text" 
+                                   id="carSearch" 
+                                   placeholder="ابحث عن السيارة..." 
+                                   class="input-gold w-full p-4 pr-12 rounded-lg text-lg">
+                            <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-yellow-400 text-xl">
+                                🔍
+                            </div>
+                        </div>
                     </div>
+
                     <div id="carOptions" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                         <!-- سيتم ملؤها بالبيانات -->
                     </div>
@@ -264,7 +302,7 @@
                         </button>
                     </div>
                     <h2 class="text-2xl font-bold mb-4 text-center text-yellow-400">
-                        الزيوت المتاحة لسيارتك
+                        الزيوت المتوفرة
                     </h2>
                     <div class="glass-effect rounded-lg p-6 mb-6">
                         <div id="carDetails" class="mb-4 text-lg">
@@ -275,10 +313,6 @@
                         </div>
                     </div>
                     <div class="text-center space-y-4">
-                        <button onclick="copyAllOils()" 
-                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors">
-                            📋 نسخ جميع الزيوت
-                        </button>
                         <button onclick="resetCalculation()" 
                                 class="btn-gold text-black font-bold px-8 py-4 rounded-lg text-lg">
                             حساب جديد
@@ -309,8 +343,6 @@
                         </button>
                     </div>
                 </div>
-
-
 
                 <!-- الحاسبة اليدوية - اختيار درجة اللزوجة -->
                 <div id="manualStep2" class="step hidden">
@@ -420,8 +452,6 @@
         </div>
     </main>
 
-
-
     <script>
         let carsData = [];
         let stockData = [];
@@ -466,62 +496,6 @@
         async function loadData() {
             console.log('محاولة تحميل البيانات من Google Sheets...');
             
-            // استخدام البيانات الاحتياطية مباشرة للاختبار
-            carsData = [
-                {
-                    carModel: "GMC Yukon",
-                    oilType: "5W-30",
-                    liters: 8,
-                    majorService: 85
-                },
-                {
-                    carModel: "Toyota Camry",
-                    oilType: "5W-30",
-                    liters: 4,
-                    majorService: 65
-                },
-                {
-                    carModel: "BMW X5",
-                    oilType: "5W-30",
-                    liters: 6,
-                    majorService: 95
-                },
-                {
-                    carModel: "Mercedes C-Class",
-                    oilType: "5W-40",
-                    liters: 7,
-                    majorService: 105
-                },
-                {
-                    carModel: "Ford F-150",
-                    oilType: "5W-20",
-                    liters: 6
-                },
-                {
-                    carModel: "Chevrolet Tahoe",
-                    oilType: "5W-30",
-                    liters: 8,
-                    majorService: 90
-                }
-            ];
-            
-            stockData = [
-                {brand: "CEPSA GENUINE", type: "5W-30", price: 2, liters: 4, priceLiter: 2, country: "Spain", contAvailable: 10, brandOfOil: "CEPSA GENUINE 5W-30"},
-                {brand: "AC DELCO", type: "5W-30", price: 2.75, liters: 4, priceLiter: 2.75, country: "USA", contAvailable: 8, brandOfOil: "AC DELCO 5W-30"},
-                {brand: "MOBIL ONE", type: "5W-30", price: 4, liters: 4, priceLiter: 4, country: "Europe", contAvailable: 5, brandOfOil: "MOBIL ONE 5W-30"},
-                {brand: "CASTROL GTX", type: "5W-30", price: 3.2, liters: 4, priceLiter: 3.2, country: "UK", contAvailable: 12, brandOfOil: "CASTROL GTX 5W-30"},
-                {brand: "SHELL HELIX", type: "5W-30", price: 2.8, liters: 4, priceLiter: 2.8, country: "Oman", contAvailable: 15, brandOfOil: "SHELL HELIX 5W-30"},
-                {brand: "LIQUI MOLY", type: "5W-30", price: 5.0, liters: 4, priceLiter: 5.0, country: "Germany", contAvailable: 6, brandOfOil: "LIQUI MOLY 5W-30"},
-                {brand: "RAVENOL", type: "5W-40", price: 4.0, liters: 4, priceLiter: 4.0, country: "Germany", contAvailable: 8, brandOfOil: "RAVENOL 0W-30"},
-                {brand: "MOBIL ONE", type: "0W-20", price: 4.2, liters: 4, priceLiter: 4.2, country: "Europe", contAvailable: 7, brandOfOil: "MOBIL ONE 5W-30"},
-                {brand: "CASTROL EDGE", type: "5W-40", price: 4.1, liters: 4, priceLiter: 4.1, country: "UK", contAvailable: 9, brandOfOil: "CASTROL EDGE 5W-30"},
-                {brand: "TOTAL QUARTZ", type: "5W-30", price: 3.0, liters: 4, priceLiter: 3.0, country: "France", contAvailable: 11, brandOfOil: "TOTAL QUARTZ 0W-40"}
-            ];
-            
-            console.log('تم تحميل بيانات السيارات:', carsData.length, 'سيارة');
-            console.log('تم تحميل بيانات المخزون:', stockData.length, 'عنصر');
-            
-            // محاولة تحميل البيانات الحقيقية في الخلفية
             try {
                 // رابط السيارات الجديد
                 const carsSheetId = '1-hVGrK0SqiLgXV_zaqhh2bqYCjjr4Q28jzWU8gG6jTU';
@@ -563,14 +537,22 @@
                         .filter(row => row.length >= 3 && row[0] && row[0].trim()) 
                         .map(row => {
                             const carModel = row[0] || '';
-                            const oilType = row[1] || '';
+                            const oilTypeCell = row[1] || '';
                             const liters = parseInt(row[2]) || 0;
-                            const majorService = parseFloat(row[19]) || 0; // عمود T (الفهرس 19)
+                            const majorService = parseFloat(row[3]) || 0;
+                            
+                            // تقسيم اللزوجات من خلية واحدة مفصولة بـ , أو /
+                            const allViscosities = oilTypeCell.split(/[,/]/).map(v => v.trim()).filter(v => v);
+                            
+                            // أول لزوجة هي الأساسية، والباقي بديلة
+                            const oilType = allViscosities[0] || '';
+                            const otherOilTypes = allViscosities.slice(1);
                             
                             const carData = {
                                 carModel: carModel.trim(),
                                 oilType: oilType.trim(),
-                                liters: liters
+                                liters: liters,
+                                otherOilTypes: otherOilTypes
                             };
                             
                             // إضافة التصفية العامة فقط إذا كانت موجودة
@@ -584,7 +566,7 @@
                     
                     if (realCarsData.length > 0) {
                         carsData = realCarsData;
-                        console.log('تم استبدال بيانات السيارات الاحتياطية بالبيانات الحقيقية:', carsData.length, 'سيارة');
+                        console.log('تم تحميل بيانات السيارات:', carsData.length, 'سيارة');
                     }
                 }
                 
@@ -610,24 +592,22 @@
                             priceLiter: parseFloat(row[4]) || 0,
                             country: row[5] || '',
                             contAvailable: parseInt(row[6]) || 0,
-                            brandOfOil: row[7] || row[9] || row[11] || row[13] || row[15] || row[17] || row[1] || row[19] || '' // أعمدة D,F,H,J,L,N,B,R
+                            brandOfOil: row[7] || row[9] || row[11] || row[13] || row[15] || row[17] || row[1] || row[19] || ''
                         }))
                         .filter(item => item.brand && item.type && item.price > 0 && item.contAvailable > 0);
                     
                     if (realStockData.length > 0) {
                         stockData = realStockData;
-                        console.log('تم استبدال بيانات المخزون الاحتياطية بالبيانات الحقيقية:', stockData.length, 'عنصر');
+                        console.log('تم تحميل بيانات المخزون:', stockData.length, 'عنصر');
                     }
                 }
                 
             } catch (error) {
-                console.error('خطأ في تحميل البيانات من Google Sheets، سيتم استخدام البيانات الاحتياطية:', error);
+                console.error('خطأ في تحميل البيانات من Google Sheets:', error);
             }
             
             return Promise.resolve();
         }
-
-
 
         // اختيار نوع الحاسبة
         function selectCalculatorType(type) {
@@ -644,45 +624,58 @@
         function displayCarOptions() {
             const container = document.getElementById('carOptions');
             
+            if (carsData.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center text-red-400 text-lg">
+                        لا توجد سيارات متاحة
+                    </div>
+                `;
+                return;
+            }
+            
             function renderCars(cars) {
-                if (cars.length === 0) {
-                    container.innerHTML = `
-                        <div class="col-span-full text-center text-red-400 text-lg">
-                            لا توجد سيارات متاحة
-                        </div>
-                    `;
-                    return;
-                }
-                
                 container.innerHTML = cars.map(car => {
                     // حساب عدد الزيوت المتاحة من المخزون
-                    const availableOilsCount = stockData.filter(oil => 
-                        oil.type === car.oilType && 
-                        oil.contAvailable >= car.liters
-                    ).length;
+                    const carViscosity = car.oilType;
+                    const otherViscosities = car.otherOilTypes || [];
+                    const allViscosities = [carViscosity, ...otherViscosities].filter(v => v && v.trim());
+                    
+                    let totalAvailableOils = 0;
+                    allViscosities.forEach(viscosity => {
+                        const oilsCount = stockData.filter(oil => 
+                            oil.type === viscosity && 
+                            oil.contAvailable >= car.liters
+                        ).length;
+                        totalAvailableOils += oilsCount;
+                    });
                     
                     return `
                         <div onclick="selectCar('${car.carModel}')" 
-                             class="glass-effect p-4 rounded-lg cursor-pointer hover:bg-yellow-900 hover:bg-opacity-20 transition-all border-2 border-transparent hover:border-yellow-500">
+                             class="glass-effect p-4 rounded-lg cursor-pointer hover:bg-yellow-900 hover:bg-opacity-20 transition-all border-2 border-transparent hover:border-yellow-500 transform hover:scale-105">
                             <h3 class="text-lg font-bold text-yellow-400">${car.carModel}</h3>
-                            <p class="text-gray-300 text-sm">اللزوجة: ${car.oilType}</p>
+                            <p class="text-gray-300 text-sm">اللزوجات: ${allViscosities.join(', ')}</p>
                             <p class="text-gray-300 text-sm">الكمية: ${car.liters} لتر</p>
-                            <p class="text-blue-400 text-sm">${availableOilsCount} زيت متاح</p>
+                            <p class="text-blue-400 text-sm font-semibold">${totalAvailableOils} زيت متاح</p>
+                            ${totalAvailableOils === 0 ? '<p class="text-red-400 text-xs mt-1">⚠️ غير متوفر حالياً</p>' : ''}
                         </div>
                     `;
                 }).join('');
             }
             
+            // عرض جميع السيارات في البداية
             renderCars(carsData);
             
-            // البحث
-            document.getElementById('carSearch').oninput = function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const filtered = carsData.filter(car => 
-                    car.carModel.toLowerCase().includes(searchTerm)
-                );
-                renderCars(filtered);
-            };
+            // إعداد البحث
+            const searchInput = document.getElementById('carSearch');
+            if (searchInput) {
+                searchInput.oninput = function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const filteredCars = carsData.filter(car => 
+                        car.carModel.toLowerCase().includes(searchTerm)
+                    );
+                    renderCars(filteredCars);
+                };
+            }
         }
 
         // اختيار السيارة
@@ -701,15 +694,6 @@
             displayAllOilsResult();
         }
 
-        // استخراج اللزوجة البديلة من عمود Brand of oil
-        function extractAlternativeViscosity(brandOfOil) {
-            if (!brandOfOil || brandOfOil.trim() === '') return null;
-            
-            const viscosityPattern = /(\d+W-?\d+)/i;
-            const match = brandOfOil.match(viscosityPattern);
-            return match ? match[1].replace('W-', 'W-') : null;
-        }
-
         // عرض جميع الزيوت المتاحة للسيارة
         function displayAllOilsResult() {
             if (!selectedCar) return;
@@ -718,9 +702,14 @@
             let carDetailsHtml = `
                 <div class="border-b border-yellow-600 pb-4">
                     <h3 class="text-lg font-bold text-yellow-400 mb-2">تفاصيل السيارة:</h3>
-                    <p class="text-base"><span class="text-gray-400">الموديل:</span> ${selectedCar.carModel}</p>
-                    <p class="text-base"><span class="text-gray-400">اللزوجة:</span> ${selectedCar.oilType}</p>
-                    <p class="text-base"><span class="text-gray-400">الكمية:</span> ${selectedCar.liters} لتر</p>
+                    <p class="text-base"><span class="text-gray-400">الموديل:</span> ${selectedCar.carModel}</p>`;
+            
+            // عرض جميع اللزوجات المتاحة
+            const carViscosity = selectedCar.oilType;
+            const otherViscosities = selectedCar.otherOilTypes || [];
+            const allViscosities = [carViscosity, ...otherViscosities].filter(v => v && v.trim());
+            
+            carDetailsHtml += `<p class="text-base"><span class="text-gray-400">الكمية:</span> ${selectedCar.liters} لتر</p>
                     <p class="text-base"><span class="text-gray-400">سعر الفلتر:</span> ${filterPrice} د.ك</p>
                     <p class="text-base"><span class="text-gray-400">الخدمة الميكانيكية:</span> ${servicePrice} د.ك</p>`;
             
@@ -740,47 +729,107 @@
             carDetailsHtml += `</div>`;
             document.getElementById('carDetails').innerHTML = carDetailsHtml;
             
-            // البحث عن الزيوت المتاحة من المخزون
-            const carViscosity = selectedCar.oilType;
-            let availableOils = [];
-            
-            // البحث بناءً على اللزوجة من oilType
-            const primaryOils = stockData.filter(oil => 
-                oil.type === carViscosity && 
-                oil.contAvailable >= selectedCar.liters
-            );
-            
-            // إضافة الزيوت
-            primaryOils.forEach(oil => {
-                availableOils.push({
-                    ...oil,
-                    displayViscosity: carViscosity
-                });
-            });
-            
-            if (availableOils.length === 0) {
+            // التحقق من عدد اللزوجات المتاحة
+            if (allViscosities.length === 0) {
                 document.getElementById('oilsList').innerHTML = `
                     <div class="text-center text-red-400 text-lg p-8">
-                        عذراً، لا توجد زيوت متوفرة بدرجة اللزوجة ${carViscosity} والكمية ${selectedCar.liters} لتر
+                        عذراً، لا توجد لزوجات متوفرة لهذه السيارة
                     </div>
                 `;
                 return;
             }
             
-            // ترتيب الزيوت حسب السعر
+            // فلترة اللزوجات التي لها زيوت متوفرة فعلاً
+            const availableViscosities = allViscosities.filter(viscosity => {
+                const availableOilsCount = stockData.filter(oil => 
+                    oil.type === viscosity && 
+                    oil.contAvailable >= selectedCar.liters
+                ).length;
+                return availableOilsCount > 0;
+            });
+            
+            // إذا كانت هناك لزوجة واحدة فقط، اعرض الزيوت مباشرة
+            if (availableViscosities.length === 1) {
+                const singleViscosity = availableViscosities[0];
+                showViscosityOilsDirect(singleViscosity);
+                return;
+            }
+            
+            // إذا كان هناك أكثر من لزوجة، اعرض مربعات الاختيار
+            let oilsListHtml = `
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold text-yellow-400 mb-4 text-center">اختر درجة اللزوجة المطلوبة:</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            `;
+            
+            allViscosities.forEach(viscosity => {
+                // حساب عدد الزيوت المتاحة لهذه اللزوجة
+                const availableOilsCount = stockData.filter(oil => 
+                    oil.type === viscosity && 
+                    oil.contAvailable >= selectedCar.liters
+                ).length;
+                
+                oilsListHtml += `
+                    <button onclick="showViscosityOils('${viscosity}')" 
+                            class="btn-gold text-black font-bold p-4 rounded-lg text-lg hover:scale-105 transition-transform ${availableOilsCount === 0 ? 'opacity-50 cursor-not-allowed' : ''}">
+                        ${viscosity}
+                        <br>
+                        <span class="text-sm">${availableOilsCount} زيت متاح</span>
+                    </button>
+                `;
+            });
+            
+            oilsListHtml += `
+                    </div>
+                </div>
+                <div id="selectedViscosityOils" class="hidden">
+                    <!-- سيتم عرض الزيوت هنا -->
+                </div>
+            `;
+            
+            document.getElementById('oilsList').innerHTML = oilsListHtml;
+        }
+        
+        // عرض الزيوت مباشرة للزوجة الواحدة
+        function showViscosityOilsDirect(viscosity) {
+            if (!selectedCar) return;
+            
+            // البحث عن الزيوت المتاحة لهذه اللزوجة
+            const availableOils = stockData.filter(oil => 
+                oil.type === viscosity && 
+                oil.contAvailable >= selectedCar.liters
+            );
+            
+            if (availableOils.length === 0) {
+                document.getElementById('oilsList').innerHTML = `
+                    <div class="text-center text-red-400 text-lg p-8">
+                        عذراً، لا توجد زيوت متوفرة بدرجة اللزوجة ${viscosity} والكمية ${selectedCar.liters} لتر
+                    </div>
+                `;
+                return;
+            }
+            
+            // ترتيب الزيوت حسب السعر من الأرخص للأغلى
             const sortedOils = availableOils.sort((a, b) => a.price - b.price);
             
-            // قائمة الزيوت
-            const oilsListHtml = sortedOils.map((oil, index) => {
+            let oilsHtml = `
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-400 mb-4 text-center">
+                        الزيوت المتاحة - درجة اللزوجة ${viscosity}
+                    </h3>
+                    <div class="space-y-3">
+            `;
+            
+            sortedOils.forEach((oil, index) => {
                 const oilTotal = oil.price * selectedCar.liters;
                 const grandTotal = oilTotal + filterPrice + servicePrice;
                 
-                return `
+                oilsHtml += `
                     <div class="glass-effect p-4 rounded-lg border-l-4 border-yellow-500">
                         <div class="flex justify-between items-start mb-2">
                             <div>
                                 <h4 class="text-lg font-bold text-yellow-400">${translateBrand(oil.brand)}</h4>
-                                <p class="text-gray-300 text-sm">اللزوجة: ${oil.displayViscosity}</p>
+                                <p class="text-gray-300 text-sm">اللزوجة: ${oil.type}</p>
                                 <p class="text-gray-300 text-sm">السعر: ${oil.price} د.ك / لتر</p>
                                 <p class="text-blue-400 text-sm">متوفر: ${oil.contAvailable} لتر</p>
                             </div>
@@ -793,36 +842,208 @@
                             <div class="text-sm text-gray-400">
                                 الزيت: ${oilTotal.toFixed(3)} + الفلتر: ${filterPrice} + الخدمة: ${servicePrice}
                             </div>
-                            <button onclick="copyIndividualOilFromStock(${index})" 
+                            <button onclick="copyViscosityOilDirect(${index}, '${viscosity}')" 
                                     class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition-colors">
                                 نسخ
                             </button>
                         </div>
                     </div>
                 `;
-            }).join('');
+            });
             
-            document.getElementById('oilsList').innerHTML = oilsListHtml;
+            oilsHtml += `
+                    </div>
+                    <div class="text-center mt-6">
+                        <button onclick="copyAllViscosityOilsDirect('${viscosity}')" 
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors">
+                            📋 نسخ جميع زيوت ${viscosity}
+                        </button>
+                    </div>
+                </div>
+            `;
             
-            // حفظ الزيوت المتاحة للاستخدام في النسخ
-            window.currentAvailableOils = sortedOils;
+            document.getElementById('oilsList').innerHTML = oilsHtml;
+            
+            // حفظ الزيوت الحالية للنسخ
+            window.currentViscosityOils = sortedOils;
+            window.currentViscosity = viscosity;
         }
-
-        // نسخ جميع الزيوت
-        function copyAllOils() {
-            if (!selectedCar || !window.currentAvailableOils) return;
+        
+        // عرض الزيوت لدرجة لزوجة محددة
+        function showViscosityOils(viscosity) {
+            if (!selectedCar) return;
             
-            const messages = window.currentAvailableOils.map((oil, index) => {
+            // البحث عن الزيوت المتاحة لهذه اللزوجة
+            const availableOils = stockData.filter(oil => 
+                oil.type === viscosity && 
+                oil.contAvailable >= selectedCar.liters
+            );
+            
+            if (availableOils.length === 0) {
+                document.getElementById('selectedViscosityOils').innerHTML = `
+                    <div class="text-center text-red-400 text-lg p-8">
+                        عذراً، لا توجد زيوت متوفرة بدرجة اللزوجة ${viscosity} والكمية ${selectedCar.liters} لتر
+                    </div>
+                `;
+                document.getElementById('selectedViscosityOils').classList.remove('hidden');
+                return;
+            }
+            
+            // ترتيب الزيوت حسب السعر من الأرخص للأغلى
+            const sortedOils = availableOils.sort((a, b) => a.price - b.price);
+            
+            let oilsHtml = `
+                <div class="border-t border-yellow-600 pt-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-yellow-400">
+                            الزيوت المتاحة - درجة اللزوجة ${viscosity}
+                        </h3>
+                        <button onclick="hideViscosityOils()" 
+                                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            إخفاء
+                        </button>
+                    </div>
+                    <div class="space-y-3">
+            `;
+            
+            sortedOils.forEach((oil, index) => {
                 const oilTotal = oil.price * selectedCar.liters;
                 const grandTotal = oilTotal + filterPrice + servicePrice;
                 
-                return `${index + 1}- متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${selectedCar.oilType} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
+                oilsHtml += `
+                    <div class="glass-effect p-4 rounded-lg border-l-4 border-yellow-500">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-lg font-bold text-yellow-400">${translateBrand(oil.brand)}</h4>
+                                <p class="text-gray-300 text-sm">اللزوجة: ${oil.type}</p>
+                                <p class="text-gray-300 text-sm">السعر: ${oil.price} د.ك / لتر</p>
+                                <p class="text-blue-400 text-sm">متوفر: ${oil.contAvailable} لتر</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xl font-bold text-green-400">${grandTotal.toFixed(3)} د.ك</p>
+                                <p class="text-gray-400 text-sm">المجموع الكلي</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-3">
+                            <div class="text-sm text-gray-400">
+                                الزيت: ${oilTotal.toFixed(3)} + الفلتر: ${filterPrice} + الخدمة: ${servicePrice}
+                            </div>
+                            <button onclick="copyViscosityOil(${index}, '${viscosity}')" 
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition-colors">
+                                نسخ
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            oilsHtml += `
+                    </div>
+                    <div class="text-center mt-6">
+                        <button onclick="copyAllViscosityOils('${viscosity}')" 
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors">
+                            📋 نسخ جميع زيوت ${viscosity}
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('selectedViscosityOils').innerHTML = oilsHtml;
+            document.getElementById('selectedViscosityOils').classList.remove('hidden');
+            
+            // حفظ الزيوت الحالية للنسخ
+            window.currentViscosityOils = sortedOils;
+            window.currentViscosity = viscosity;
+        }
+        
+        // إخفاء زيوت اللزوجة المحددة
+        function hideViscosityOils() {
+            document.getElementById('selectedViscosityOils').classList.add('hidden');
+        }
+        
+        // نسخ زيت من لزوجة محددة
+        function copyViscosityOil(index, viscosity) {
+            if (!selectedCar || !window.currentViscosityOils || !window.currentViscosityOils[index]) return;
+            
+            const oil = window.currentViscosityOils[index];
+            const oilTotal = oil.price * selectedCar.liters;
+            const grandTotal = oilTotal + filterPrice + servicePrice;
+            
+            const message = `متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${viscosity} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
+            
+            // الحصول على الزر
+            const copyBtn = document.querySelector(`button[onclick="copyViscosityOil(${index}, '${viscosity}')"]`);
+            const originalText = copyBtn.textContent;
+            
+            // محاولة النسخ
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(message).then(() => {
+                    copyBtn.textContent = 'تم ✓';
+                    copyBtn.classList.add('bg-green-600');
+                    copyBtn.classList.remove('bg-blue-600');
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                        copyBtn.classList.remove('bg-green-600');
+                        copyBtn.classList.add('bg-blue-600');
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopy(message, copyBtn, originalText);
+                });
+            } else {
+                fallbackCopy(message, copyBtn, originalText);
+            }
+        }
+        
+        // نسخ زيت من العرض المباشر
+        function copyViscosityOilDirect(index, viscosity) {
+            if (!selectedCar || !window.currentViscosityOils || !window.currentViscosityOils[index]) return;
+            
+            const oil = window.currentViscosityOils[index];
+            const oilTotal = oil.price * selectedCar.liters;
+            const grandTotal = oilTotal + filterPrice + servicePrice;
+            
+            const message = `متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${viscosity} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
+            
+            // الحصول على الزر
+            const copyBtn = document.querySelector(`button[onclick="copyViscosityOilDirect(${index}, '${viscosity}')"]`);
+            const originalText = copyBtn.textContent;
+            
+            // محاولة النسخ
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(message).then(() => {
+                    copyBtn.textContent = 'تم ✓';
+                    copyBtn.classList.add('bg-green-600');
+                    copyBtn.classList.remove('bg-blue-600');
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                        copyBtn.classList.remove('bg-green-600');
+                        copyBtn.classList.add('bg-blue-600');
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopy(message, copyBtn, originalText);
+                });
+            } else {
+                fallbackCopy(message, copyBtn, originalText);
+            }
+        }
+        
+        // نسخ جميع زيوت اللزوجة من العرض المباشر
+        function copyAllViscosityOilsDirect(viscosity) {
+            if (!selectedCar || !window.currentViscosityOils) return;
+            
+            const messages = window.currentViscosityOils.map((oil, index) => {
+                const oilTotal = oil.price * selectedCar.liters;
+                const grandTotal = oilTotal + filterPrice + servicePrice;
+                
+                return `${index + 1}- متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${viscosity} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
             });
             
             const allMessages = messages.join('\n\n');
             
             // الحصول على الزر
-            const copyBtn = document.querySelector('button[onclick="copyAllOils()"]');
+            const copyBtn = document.querySelector(`button[onclick="copyAllViscosityOilsDirect('${viscosity}')"]`);
             const originalText = copyBtn.textContent;
             
             // محاولة النسخ
@@ -844,25 +1065,28 @@
                 fallbackCopy(allMessages, copyBtn, originalText);
             }
         }
-
-        // نسخ زيت واحد من المخزون
-        function copyIndividualOilFromStock(index) {
-            if (!selectedCar || !window.currentAvailableOils || !window.currentAvailableOils[index]) return;
+        
+        // نسخ جميع زيوت اللزوجة المحددة
+        function copyAllViscosityOils(viscosity) {
+            if (!selectedCar || !window.currentViscosityOils) return;
             
-            const oil = window.currentAvailableOils[index];
-            const oilTotal = oil.price * selectedCar.liters;
-            const grandTotal = oilTotal + filterPrice + servicePrice;
+            const messages = window.currentViscosityOils.map((oil, index) => {
+                const oilTotal = oil.price * selectedCar.liters;
+                const grandTotal = oilTotal + filterPrice + servicePrice;
+                
+                return `${index + 1}- متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${viscosity} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
+            });
             
-            const message = `متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${selectedCar.oilType} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
+            const allMessages = messages.join('\n\n');
             
             // الحصول على الزر
-            const copyBtn = document.querySelector(`button[onclick="copyIndividualOilFromStock(${index})"]`);
+            const copyBtn = document.querySelector(`button[onclick="copyAllViscosityOils('${viscosity}')"]`);
             const originalText = copyBtn.textContent;
             
             // محاولة النسخ
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(message).then(() => {
-                    copyBtn.textContent = 'تم ✓';
+                navigator.clipboard.writeText(allMessages).then(() => {
+                    copyBtn.textContent = 'تم النسخ ✓';
                     copyBtn.classList.add('bg-green-600');
                     copyBtn.classList.remove('bg-blue-600');
                     
@@ -872,50 +1096,10 @@
                         copyBtn.classList.add('bg-blue-600');
                     }, 2000);
                 }).catch(() => {
-                    fallbackCopy(message, copyBtn, originalText);
+                    fallbackCopy(allMessages, copyBtn, originalText);
                 });
             } else {
-                fallbackCopy(message, copyBtn, originalText);
-            }
-        }
-
-        // نسخ زيت واحد (للحاسبة اليدوية - احتفظ بها للتوافق)
-        function copyIndividualOil(index) {
-            if (!selectedCar || !selectedCar.oils || !selectedCar.oils[index]) return;
-            
-            const oil = selectedCar.oils[index];
-            const oilTotal = oil.price * selectedCar.liters;
-            const grandTotal = oilTotal + filterPrice + servicePrice;
-            
-            // تحديد اللزوجة المعروضة
-            let displayViscosity = selectedCar.oilType;
-            if (oil.viscosity && oil.viscosity !== selectedCar.oilType) {
-                displayViscosity = `${selectedCar.oilType} / ${oil.viscosity}`;
-            }
-            
-            const message = `متوفر زيت ${translateBrand(oil.brand)} (${selectedCar.liters}) لتر ودرجة اللزوجة ${displayViscosity} مع الفلتر من الوكيل المعتمد مع فحص مجاني لمستوى غاز المكيف وإعادة برمجة علامة الخدمة جدام البيت بقيمة ${grandTotal.toFixed(3)} دك`;
-            
-            // الحصول على الزر
-            const copyBtn = document.querySelector(`button[onclick="copyIndividualOil(${index})"]`);
-            const originalText = copyBtn.textContent;
-            
-            // محاولة النسخ
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(message).then(() => {
-                    copyBtn.textContent = 'تم ✓';
-                    copyBtn.classList.add('bg-green-600');
-                    copyBtn.classList.remove('bg-blue-600');
-                    
-                    setTimeout(() => {
-                        copyBtn.textContent = originalText;
-                        copyBtn.classList.remove('bg-green-600');
-                        copyBtn.classList.add('bg-blue-600');
-                    }, 2000);
-                }).catch(() => {
-                    fallbackCopy(message, copyBtn, originalText);
-                });
-            } else {
-                fallbackCopy(message, copyBtn, originalText);
+                fallbackCopy(allMessages, copyBtn, originalText);
             }
         }
 
@@ -1046,10 +1230,13 @@
             };
         }
 
-
-
         function selectOil(brandName, price) {
             selectedOil = {name: brandName, price: price};
+            // مسح مربع البحث تلقائياً
+            const oilSearch = document.getElementById('oilSearch');
+            if (oilSearch) {
+                oilSearch.value = '';
+            }
             // إذا كان الفلتر محدد مسبقاً، انتقل مباشرة للنتيجة
             if (filterPrice > 0) {
                 showStep('finalResult');
@@ -1259,13 +1446,11 @@
             // تنظيف الحقول
             const oilSearch = document.getElementById('oilSearch');
             const litersInput = document.getElementById('litersInput');
-            const carSearch = document.getElementById('carSearch');
             const customFilterPrice = document.getElementById('customFilterPrice');
             const customFilterPriceManual = document.getElementById('customFilterPriceManual');
             
             if (oilSearch) oilSearch.value = '';
             if (litersInput) litersInput.value = '';
-            if (carSearch) carSearch.value = '';
             if (customFilterPrice) customFilterPrice.value = '';
             if (customFilterPriceManual) customFilterPriceManual.value = '';
             
@@ -1276,8 +1461,6 @@
             // العودة للشاشة الرئيسية
             showStep('step1');
         }
-
-
 
         // إعداد السحب والإفلات للإيموجيات
         function setupDraggableElements() {
@@ -1405,18 +1588,63 @@
             }, 200);
         }
 
-        // إضافة تأثيرات تفاعلية للإيموجيات
-        function addInteractiveEffects() {
-            // لا توجد تأثيرات إضافية - الإيموجيات تبقى في مكانها
-        }
-
         // وظائف مودال التصفية العامة
         function showMajorServiceModal() {
+            // تحديث السعر في المودال
+            const serviceAmountSpan = document.getElementById('serviceAmount');
+            if (serviceAmountSpan && selectedCar && selectedCar.majorService) {
+                serviceAmountSpan.textContent = selectedCar.majorService;
+            }
             document.getElementById('majorServiceModal').classList.remove('hidden');
         }
         
         function closeMajorServiceModal() {
             document.getElementById('majorServiceModal').classList.add('hidden');
+        }
+        
+        function copyMajorServiceInfo() {
+            if (!selectedCar || !selectedCar.majorService) return;
+            
+            const message = `التصفية العامة في بورتراج
+
+التصفية العامة تشمل:
+
+* تبديل بلاكات
+* تبديل فلتر هواء
+* تبديل فلتر مكيف
+* منظف دورة البانزين
+* بخاخ التصفية
+* تبديل زيت المكينة
+* تبديل فلتر الزيت
+* برمجة علامة الخدمة (عن طريق جهاز الكومبيوتر)
+* فحص لمستوى الزيوت والسوائل (ماء راديتر - زيت السكان - زيت القير)
+* فحص لحالة المساحات والتواير
+* فحص السفايف والديسكات
+
+جميع القطع أصلية معتمدة من الوكلاء الرسمية
+
+رسوم الخدمة مع جميع القطع المذكورة: ${selectedCar.majorService} د.ك`;
+            
+            const copyBtn = document.querySelector('button[onclick="copyMajorServiceInfo()"]');
+            const originalText = copyBtn.textContent;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(message).then(() => {
+                    copyBtn.textContent = 'تم النسخ ✓';
+                    copyBtn.classList.add('bg-green-600');
+                    copyBtn.classList.remove('bg-blue-600');
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                        copyBtn.classList.remove('bg-green-600');
+                        copyBtn.classList.add('bg-blue-600');
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopy(message, copyBtn, originalText);
+                });
+            } else {
+                fallbackCopy(message, copyBtn, originalText);
+            }
         }
         
         // إغلاق المودال عند النقر خارجه
@@ -1432,43 +1660,12 @@
         let lastUpdateTime = 0;
         let isUpdating = false;
         
-        // إنشاء مؤشر التحديث
-        function createUpdateIndicator() {
-            const indicator = document.createElement('div');
-            indicator.id = 'updateIndicator';
-            indicator.className = 'fixed top-4 right-4 z-50 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full opacity-0';
-            indicator.innerHTML = '🔄 جاري التحديث...';
-            document.body.appendChild(indicator);
-            return indicator;
-        }
-        
-        // عرض مؤشر التحديث
-        function showUpdateIndicator(message = '🔄 جاري التحديث...') {
-            let indicator = document.getElementById('updateIndicator');
-            if (!indicator) {
-                indicator = createUpdateIndicator();
-            }
-            indicator.innerHTML = message;
-            indicator.classList.remove('translate-x-full', 'opacity-0');
-            indicator.classList.add('translate-x-0', 'opacity-100');
-        }
-        
-        // إخفاء مؤشر التحديث
-        function hideUpdateIndicator() {
-            const indicator = document.getElementById('updateIndicator');
-            if (indicator) {
-                indicator.classList.add('translate-x-full', 'opacity-0');
-                indicator.classList.remove('translate-x-0', 'opacity-100');
-            }
-        }
-        
-        // التحقق من التحديثات
+        // التحقق من التحديثات (صامت)
         async function checkForUpdates() {
             if (isUpdating) return;
             
             try {
                 isUpdating = true;
-                showUpdateIndicator('🔍 البحث عن تحديثات...');
                 
                 const carsSheetId = '1-hVGrK0SqiLgXV_zaqhh2bqYCjjr4Q28jzWU8gG6jTU';
                 const stockSheetId = '1ax4pCBDTm6Vkq-MZjmmOY1dgwKCUQS5x1GeffkUYOzI';
@@ -1514,16 +1711,11 @@
                 }
                 
                 if (hasUpdates) {
-                    showUpdateIndicator('✅ تم التحديث بنجاح!');
                     refreshCurrentView();
-                    setTimeout(hideUpdateIndicator, 2000);
-                } else {
-                    hideUpdateIndicator();
                 }
                 
             } catch (error) {
                 console.error('خطأ في التحقق من التحديثات:', error);
-                hideUpdateIndicator();
             } finally {
                 isUpdating = false;
             }
@@ -1555,15 +1747,23 @@
             return carsRows.slice(1)
                 .filter(row => row.length >= 3 && row[0] && row[0].trim()) 
                 .map(row => {
-                    const carModel = row[0] || '';
-                    const oilType = row[1] || '';
-                    const liters = parseInt(row[2]) || 0;
-                    const majorService = parseFloat(row[19]) || 0;
+                    const carModel = row[0] || '';  // العمود A
+                    const oilTypeCell = row[1] || '';   // العمود B
+                    const liters = parseInt(row[2]) || 0; // العمود C
+                    const majorService = parseFloat(row[3]) || 0; // العمود D
+                    
+                    // تقسيم اللزوجات من خلية واحدة مفصولة بـ , أو /
+                    const allViscosities = oilTypeCell.split(/[,/]/).map(v => v.trim()).filter(v => v);
+                    
+                    // أول لزوجة هي الأساسية، والباقي بديلة
+                    const oilType = allViscosities[0] || '';
+                    const otherOilTypes = allViscosities.slice(1);
                     
                     const carData = {
                         carModel: carModel.trim(),
                         oilType: oilType.trim(),
-                        liters: liters
+                        liters: liters,
+                        otherOilTypes: otherOilTypes // اللزوجات البديلة
                     };
                     
                     if (majorService > 0) {
@@ -1645,26 +1845,9 @@
             }
         }
         
-        // تحديث يدوي
-        function manualUpdate() {
-            checkForUpdates();
-        }
-        
-        // إضافة زر التحديث اليدوي
-        function addManualUpdateButton() {
-            const updateBtn = document.createElement('button');
-            updateBtn.innerHTML = '🔄';
-            updateBtn.className = 'fixed bottom-4 right-4 z-50 bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 hover:scale-110';
-            updateBtn.title = 'تحديث البيانات يدوياً';
-            updateBtn.onclick = manualUpdate;
-            document.body.appendChild(updateBtn);
-        }
-        
         // تحميل البيانات عند بدء التطبيق
         loadData().then(() => {
             setupDraggableElements();
-            addInteractiveEffects();
-            addManualUpdateButton();
             startAutoUpdate();
             
             // التحقق من التحديثات بعد 5 ثوانٍ من التحميل
@@ -1674,5 +1857,5 @@
         // إيقاف التحديث التلقائي عند إغلاق الصفحة
         window.addEventListener('beforeunload', stopAutoUpdate);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99542263571251c2',t:'MTc2MTU4ODQ2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995898e772635d9b',t:'MTc2MTYzNTI1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
