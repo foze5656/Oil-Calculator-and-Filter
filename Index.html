@@ -95,7 +95,7 @@
     .dashboard-wrapper {
       height: 100%;
       width: 100%;
-      display: grid;
+      display: none;
       grid-template-columns: 220px 1fr;
       background: #0a0a0a;
       overflow: hidden;
@@ -700,6 +700,482 @@
       display: none !important;
     }
     
+    /* Login Page Styles */
+    .login-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    .login-box {
+      background: linear-gradient(145deg, #1a1a1a 0%, #262626 100%);
+      border: 2px solid #F2BC1B;
+      border-radius: 12px;
+      padding: 40px 50px;
+      width: 400px;
+      max-width: 90%;
+      box-shadow: 0 20px 60px rgba(242, 188, 27, 0.2),
+                  0 0 100px rgba(242, 188, 27, 0.05);
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .login-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #F2BC1B;
+      margin: 0 0 8px 0;
+      text-shadow: 0 0 20px rgba(242, 188, 27, 0.3);
+    }
+    
+    .login-header p {
+      font-size: 14px;
+      color: #999;
+      margin: 0;
+    }
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .login-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .login-field label {
+      font-size: 14px;
+      color: #F2BC1B;
+      font-weight: 600;
+    }
+    
+    .login-input {
+      background: #0a0a0a;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .login-input:focus {
+      outline: none;
+      border-color: #F2BC1B;
+      background: #0f0f0f;
+      box-shadow: 0 0 20px rgba(242, 188, 27, 0.1);
+    }
+    
+    .login-input::placeholder {
+      color: #555;
+    }
+    
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: -8px;
+    }
+    
+    .remember-me input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #F2BC1B;
+    }
+    
+    .remember-me label {
+      font-size: 14px;
+      color: #ccc;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .login-button {
+      background: linear-gradient(135deg, #F2BC1B 0%, #d4a319 100%);
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+    
+    .login-button:hover {
+      background: linear-gradient(135deg, #d4a319 0%, #F2BC1B 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(242, 188, 27, 0.3);
+    }
+    
+    .login-button:active {
+      transform: translateY(0);
+    }
+    
+    .login-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .login-error {
+      background: #4a1a1a;
+      border: 1px solid #ef4444;
+      border-radius: 6px;
+      padding: 12px;
+      color: #fca5a5;
+      font-size: 13px;
+      text-align: center;
+      margin-top: -8px;
+      animation: shake 0.5s ease;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+    
+    .logout-btn {
+      background: #4a1a1a;
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .logout-btn:hover {
+      background: #5a1a1a;
+      border-color: #ff5555;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    
+    /* Logout Confirmation Modal */
+    .logout-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      animation: fadeIn 0.2s ease;
+    }
+    
+    .logout-modal {
+      background: linear-gradient(145deg, #1a1a1a 0%, #262626 100%);
+      border: 2px solid #ef4444;
+      border-radius: 12px;
+      padding: 35px 40px;
+      width: 420px;
+      max-width: 90%;
+      box-shadow: 0 20px 60px rgba(239, 68, 68, 0.3),
+                  0 0 100px rgba(239, 68, 68, 0.1);
+      animation: slideIn 0.3s ease;
+      text-align: center;
+    }
+    
+    .logout-modal-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    
+    .logout-modal-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ef4444;
+      margin: 0 0 12px 0;
+      text-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    }
+    
+    .logout-modal-message {
+      font-size: 15px;
+      color: #ccc;
+      margin: 0 0 30px 0;
+      line-height: 1.6;
+    }
+    
+    .logout-modal-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    
+    .logout-modal-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .logout-modal-btn-confirm {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #fff;
+    }
+    
+    .logout-modal-btn-confirm:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+    }
+    
+    .logout-modal-btn-cancel {
+      background: #262626;
+      color: #F2BC1B;
+      border: 2px solid #404040;
+    }
+    
+    .logout-modal-btn-cancel:hover {
+      background: #333;
+      border-color: #F2BC1B;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(242, 188, 27, 0.2);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .login-box {
+        padding: 30px 25px;
+        width: 90%;
+      }
+      
+      .login-header h1 {
+        font-size: 24px;
+      }
+      
+      .logout-modal {
+        padding: 25px 20px;
+        width: 90%;
+      }
+      
+      .logout-modal-icon {
+        font-size: 48px;
+      }
+      
+      .logout-modal-title {
+        font-size: 20px;
+      }
+    }
+    
+    /* Login Page Styles */
+    .login-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    .login-box {
+      background: linear-gradient(145deg, #1a1a1a 0%, #262626 100%);
+      border: 2px solid #F2BC1B;
+      border-radius: 12px;
+      padding: 40px 50px;
+      width: 400px;
+      max-width: 90%;
+      box-shadow: 0 20px 60px rgba(242, 188, 27, 0.2),
+                  0 0 100px rgba(242, 188, 27, 0.05);
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .login-header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #F2BC1B;
+      margin: 0 0 8px 0;
+      text-shadow: 0 0 20px rgba(242, 188, 27, 0.3);
+    }
+    
+    .login-header p {
+      font-size: 14px;
+      color: #999;
+      margin: 0;
+    }
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .login-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .login-field label {
+      font-size: 14px;
+      color: #F2BC1B;
+      font-weight: 600;
+    }
+    
+    .login-input {
+      background: #0a0a0a;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .login-input:focus {
+      outline: none;
+      border-color: #F2BC1B;
+      background: #0f0f0f;
+      box-shadow: 0 0 20px rgba(242, 188, 27, 0.1);
+    }
+    
+    .login-input::placeholder {
+      color: #555;
+    }
+    
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: -8px;
+    }
+    
+    .remember-me input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #F2BC1B;
+    }
+    
+    .remember-me label {
+      font-size: 14px;
+      color: #ccc;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .login-button {
+      background: linear-gradient(135deg, #F2BC1B 0%, #d4a319 100%);
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+    
+    .login-button:hover {
+      background: linear-gradient(135deg, #d4a319 0%, #F2BC1B 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(242, 188, 27, 0.3);
+    }
+    
+    .login-button:active {
+      transform: translateY(0);
+    }
+    
+    .login-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .login-error {
+      background: #4a1a1a;
+      border: 1px solid #ef4444;
+      border-radius: 6px;
+      padding: 12px;
+      color: #fca5a5;
+      font-size: 13px;
+      text-align: center;
+      margin-top: -8px;
+      animation: shake 0.5s ease;
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+    
+    .logout-btn {
+      background: #4a1a1a;
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .logout-btn:hover {
+      background: #5a1a1a;
+      border-color: #ff5555;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    
     /* Fullscreen Iframe Container */
     .fullscreen-iframe-wrapper {
       position: fixed;
@@ -887,6 +1363,69 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
+  
+  <!-- Login Page -->
+  <div id="loginContainer" class="login-container hidden">
+    <div class="login-box">
+      <div class="login-header">
+        <img src="https://i.top4top.io/p_35860o72q1.png" alt="بورتراج" style="width: 150px; height: auto; margin: 0 auto 20px; display: block;">
+      </div>
+      
+      <form id="loginForm" class="login-form">
+        <div class="login-field">
+          <label for="username">اسم المستخدم</label>
+          <input 
+            type="text" 
+            id="username" 
+            class="login-input" 
+            placeholder="أدخل اسم المستخدم"
+            autocomplete="username"
+            required
+          />
+        </div>
+        
+        <div class="login-field">
+          <label for="password">كلمة المرور</label>
+          <input 
+            type="password" 
+            id="password" 
+            class="login-input" 
+            placeholder="أدخل كلمة المرور"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe">تذكرني</label>
+        </div>
+        
+        <div id="loginError" class="login-error hidden"></div>
+        
+        <button type="submit" id="loginButton" class="login-button">
+          دخول
+        </button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Logout Confirmation Modal -->
+  <div id="logoutModal" class="logout-modal-overlay hidden">
+    <div class="logout-modal">
+      <div class="logout-modal-icon">⚠️</div>
+      <h2 class="logout-modal-title">تسجيل الخروج</h2>
+      <p class="logout-modal-message">
+        هل أنت متأكد من رغبتك في تسجيل الخروج من النظام؟<br>
+        سيتم مسح جلسة الدخول الحالية.
+      </p>
+      <div class="logout-modal-buttons">
+        <button id="logoutCancel" class="logout-modal-btn logout-modal-btn-cancel">إلغاء</button>
+        <button id="logoutConfirm" class="logout-modal-btn logout-modal-btn-confirm">تسجيل الخروج</button>
+      </div>
+    </div>
+  </div>
+  
   <div class="dashboard-wrapper" id="dashboardWrapper"><!-- Sidebar -->
    <aside class="sidebar" id="sidebar">
     <div class="logo-section"><img src="https://i.top4top.io/p_35860o72q1.png" alt="Logo">
@@ -896,8 +1435,6 @@
     </div>
     <div class="service-submenu" id="staffSubmenu">
      <div class="service-item submenu-item" data-service="staff_centers"><span class="label">مراكز الطلبات</span>
-     </div>
-     <div class="service-item submenu-item" data-service="staff_followup"><span class="label">متابعة الطلبات</span>
      </div>
     </div>
     <div class="service-item" data-service="tow"><span class="icon">🚚</span> <span class="label">ونشات</span>
@@ -938,11 +1475,15 @@
     </div>
     <div class="service-item" data-service="insurance"><span class="icon">🚧</span> <span class="label">تأمينات</span>
     </div>
+    <div class="service-item" data-service="annualSubscription"><span class="icon">📅</span> <span class="label">الاشتراك السنوي</span>
+    </div>
    </aside><!-- Main Content -->
    <main class="main-content"><!-- Header Bar -->
     <header class="header-bar">
      <h2 id="serviceTitle">اختر خدمة من القائمة</h2>
-     <div class="status"><span class="status-dot"></span> <span>متصل</span>
+     <div style="display: flex; align-items: center; gap: 15px;">
+       <div class="status"><span class="status-dot"></span> <span>متصل</span></div>
+       <button id="logoutButton" class="logout-btn" style="display: none;">تسجيل الخروج</button>
      </div>
     </header><!-- Content Area -->
     <div id="contentArea" class="content-area">
@@ -963,6 +1504,158 @@
    </div>
   </div>
   <script>
+    // ========== LOGIN SYSTEM ==========
+    const GOOGLE_SHEET_ID = '1x2ongtstODqEEWh_jAwN8zLHjsYeIppk8EH_Q1CXMzk';
+    const USERS_SHEET_NAME = 'users';
+    const GOOGLE_SHEET_URL = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json&sheet=${USERS_SHEET_NAME}`;
+    
+    let usersData = [];
+    let isAuthenticated = false;
+    
+    // Check if user is already logged in
+    function checkAuthStatus() {
+      const authToken = localStorage.getItem('authToken');
+      const rememberMe = localStorage.getItem('rememberMe') === 'true';
+      
+      if (authToken && rememberMe) {
+        isAuthenticated = true;
+        showMainApp();
+      } else {
+        showLogin();
+      }
+    }
+    
+    // Load users from Google Sheets
+    async function loadUsers() {
+      try {
+        const response = await fetch(GOOGLE_SHEET_URL);
+        const text = await response.text();
+        
+        // Parse Google Sheets JSON response
+        const jsonString = text.substring(47).slice(0, -2);
+        const data = JSON.parse(jsonString);
+        
+        usersData = [];
+        if (data.table && data.table.rows) {
+          // Skip header row (index 0) and start from index 1
+          for (let i = 1; i < data.table.rows.length; i++) {
+            const row = data.table.rows[i];
+            if (row.c && row.c[0] && row.c[1]) {
+              const username = row.c[0].v;
+              const password = row.c[1].v;
+              if (username && password) {
+                usersData.push({ username: String(username), password: String(password) });
+              }
+            }
+          }
+        }
+        
+        console.log('✅ Users loaded:', usersData.length);
+        return true;
+      } catch (error) {
+        console.error('❌ Error loading users:', error);
+        return false;
+      }
+    }
+    
+    // Verify login credentials
+    function verifyLogin(username, password) {
+      return usersData.some(user => 
+        user.username === username && user.password === password
+      );
+    }
+    
+    // Show login page
+    function showLogin() {
+      document.getElementById('loginContainer').classList.remove('hidden');
+      document.querySelector('.dashboard-wrapper').style.display = 'none';
+      document.getElementById('logoutButton').style.display = 'none';
+    }
+    
+    // Show main app
+    function showMainApp() {
+      document.getElementById('loginContainer').classList.add('hidden');
+      document.querySelector('.dashboard-wrapper').style.display = 'grid';
+      document.getElementById('logoutButton').style.display = 'block';
+    }
+    
+    // Initialize login system
+    (async function initLogin() {
+      await loadUsers();
+      checkAuthStatus();
+      
+      const loginForm = document.getElementById('loginForm');
+      const loginError = document.getElementById('loginError');
+      const loginButton = document.getElementById('loginButton');
+      const logoutButton = document.getElementById('logoutButton');
+      
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const rememberMe = document.getElementById('rememberMe').checked;
+        
+        loginButton.disabled = true;
+        loginButton.textContent = 'جاري التحقق...';
+        loginError.classList.add('hidden');
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        if (verifyLogin(username, password)) {
+          const authToken = btoa(username + ':' + Date.now());
+          localStorage.setItem('authToken', authToken);
+          localStorage.setItem('rememberMe', rememberMe);
+          localStorage.setItem('currentUser', username);
+          
+          isAuthenticated = true;
+          showMainApp();
+          
+          loginForm.reset();
+          loginButton.disabled = false;
+          loginButton.textContent = 'دخول';
+        } else {
+          loginError.textContent = '❌ اسم المستخدم أو كلمة المرور غير صحيحة';
+          loginError.classList.remove('hidden');
+          loginButton.disabled = false;
+          loginButton.textContent = 'دخول';
+          
+          document.querySelector('.login-box').style.animation = 'shake 0.5s ease';
+          setTimeout(() => {
+            document.querySelector('.login-box').style.animation = '';
+          }, 500);
+        }
+      });
+      
+      // Logout button - show custom modal
+      logoutButton.addEventListener('click', () => {
+        document.getElementById('logoutModal').classList.remove('hidden');
+      });
+      
+      // Logout modal handlers
+      document.getElementById('logoutCancel').addEventListener('click', () => {
+        document.getElementById('logoutModal').classList.add('hidden');
+      });
+      
+      document.getElementById('logoutConfirm').addEventListener('click', () => {
+        document.getElementById('logoutModal').classList.add('hidden');
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('rememberMe');
+        localStorage.removeItem('currentUser');
+        isAuthenticated = false;
+        showLogin();
+      });
+      
+      // Close modal when clicking outside
+      document.getElementById('logoutModal').addEventListener('click', (e) => {
+        if (e.target.id === 'logoutModal') {
+          document.getElementById('logoutModal').classList.add('hidden');
+        }
+      });
+    })();
+    
+    // ========== ORIGINAL APP CODE ==========
+    
     // Configuration
     const defaultConfig = {
       site_title: 'خدمات بورتراج',
@@ -1190,10 +1883,10 @@
           'ringRepair': 'تصليح الرنقات',
           'mechanical': 'خدمات ميكانيكية',
           'staff_centers': 'مراكز الطلبات',
-          'staff_followup': 'متابعة الطلبات',
           'carwash': 'غسيل السيارات',
           'protection': 'الحمايه والتغيم',
-          'insurance': 'تأمينات'
+          'insurance': 'تأمينات',
+          'annualSubscription': 'الاشتراك السنوي'
         };
         
         document.getElementById('serviceTitle').textContent = serviceTitles[currentService];
@@ -1238,9 +1931,6 @@
           case 'staff_centers':
             renderStaffInterface();
             break;
-          case 'staff_followup':
-            renderDriverFollowupInterface();
-            break;
           case 'carwash':
             renderCarWashInterface();
             break;
@@ -1249,6 +1939,9 @@
             break;
           case 'insurance':
             renderInsuranceInterface();
+            break;
+          case 'annualSubscription':
+            renderAnnualSubscriptionInterface();
             break;
         }
       }
@@ -2856,12 +3549,16 @@
       const contentArea = document.getElementById('contentArea');
       contentArea.innerHTML = `
         <div class="form-section" id="mechTypeSection">
-          <h3 class="section-title">نوع الخدمة</h3>
-          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
-            <div style="flex:1"></div>
-            <button id="mechAppointmentsBtn" class="btn-option" style="padding:6px 10px;">المواعيد</button>
-          </div>
+          <h3 class="section-title" style="display:flex; align-items:center; gap:8px;">
+            <span>نوع الخدمة</span>
+            <button id="groupsCircleBtn" title="القروبات" aria-label="القروبات"
+              style="height:28px; border-radius:16px; display:inline-flex; align-items:center; justify-content:center; background:#0a0a0a; border:1px solid #333; color:#F2BC1B; font-size:14px; cursor:pointer; padding:0 10px; gap:6px;">
+              <span>👥</span>
+              <span style="color:#F2BC1B;">اسماء القروبات</span>
+            </button>
+          </h3>
           <div class="btn-grid" style="grid-template-columns: repeat(5, 1fr);">
+            <button class="btn-option" id="mechAppointmentsBtn">المواعيد</button>
             <button class="btn-option" data-mech="inspection">فحص السيارة</button>
             <button class="btn-option" data-mech="brakes">سفايف وديسكات</button>
             <button class="btn-option" data-mech="oilfilter">زيت وفلتر</button>
@@ -3097,6 +3794,12 @@
           
           renderMechanicalAppointments();
         };
+      }
+
+      // Groups circle button opens groups modal without leaving mechanical UI
+      const groupsCircleBtn = document.getElementById('groupsCircleBtn');
+      if (groupsCircleBtn) {
+        groupsCircleBtn.onclick = () => openGroupsModal();
       }
     }
 
@@ -3400,6 +4103,14 @@
       }
     }
 
+    // Helper function to get local date in YYYY-MM-DD format (without UTC offset)
+    function getLocalDateString(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
     function parseCellDate(cell) {
       if (!cell) return null;
       
@@ -3411,7 +4122,8 @@
       // محاولة تحويلها إلى تاريخ
       const d = new Date(cell);
       if (!isNaN(d.getTime())) {
-        return d.toISOString().split('T')[0];
+        // Use local date instead of UTC (toISOString)
+        return getLocalDateString(d);
       }
       
       return null;
@@ -3423,10 +4135,10 @@
       const techFilter = document.getElementById('mechTechnicianFilter');
       const tableBody = document.querySelector('#mechAppointmentsTable tbody');
 
-      // default date = today
+      // default date = today (using local date, not UTC)
       if (!dateInput.value) {
         const today = new Date();
-        dateInput.value = today.toISOString().split('T')[0];
+        dateInput.value = getLocalDateString(today);
       }
 
       // load data
@@ -3438,12 +4150,16 @@
       }
 
       // rows: include header row; data starts from row index 1 (second row)
-      const dataRows = rows.slice(1);
+      let dataRows = rows.slice(1);
 
-      // build technicians list (column G -> index 6)
-      const techs = new Set();
-      dataRows.forEach(r => { if (r[6]) techs.add(r[6]); });
-      techFilter.innerHTML = '<option value="">الكل</option>' + Array.from(techs).map(t => `<option value="${t}">${t}</option>`).join('');
+      const populateTechnicians = () => {
+        const techs = new Set();
+        dataRows.forEach(r => { if (r[6]) techs.add(r[6]); });
+        const current = techFilter.value;
+        techFilter.innerHTML = '<option value="">الكل</option>' + Array.from(techs).map(t => `<option value="${t}">${t}</option>`).join('');
+        if (current && techs.has(current)) techFilter.value = current;
+      };
+      populateTechnicians();
 
       function filterAndRender() {
         const selectedDate = dateInput.value;
@@ -3494,8 +4210,21 @@
         window.open('https://docs.google.com/spreadsheets/d/1CPGWPsJ3lFdYkV2DMWmJef5yw7QBimoTruBw-ef1Dq4/edit?usp=sharing', '_blank');
       };
 
+      const scheduleAutoRefresh = () => {
+        if (window._mechAutoRefreshTimer) clearInterval(window._mechAutoRefreshTimer);
+        window._mechAutoRefreshTimer = setInterval(async () => {
+          const updatedRows = await loadMechanicalAppointmentsData();
+          if (!updatedRows) return;
+          rows = updatedRows;
+          dataRows = rows.slice(1);
+          populateTechnicians();
+          filterAndRender();
+        }, 60000);
+      };
+
       section.classList.remove('hidden');
       filterAndRender();
+      scheduleAutoRefresh();
     }
 
     function calculateAlternatorPrice() {
@@ -3616,7 +4345,7 @@
         const appointmentDateTime = document.getElementById('appointmentDateTime');
         if (!appointmentDateTime) return;
         prepareDateTimeInput(appointmentDateTime);
-        const dateOnly = (appointmentDateTime.value || '').split('T')[0] || new Date().toISOString().split('T')[0];
+        const dateOnly = (appointmentDateTime.value || '').split('T')[0] || getLocalDateString(new Date());
         loadCarWashAppointments(dateOnly);
         appointmentDateTime.onchange = () => {
           const selectedDate = (appointmentDateTime.value || '').split('T')[0];
@@ -3700,7 +4429,7 @@
       if (appointmentDateTime) {
         prepareDateTimeInput(appointmentDateTime);
         const selectedDate = (appointmentDateTime.value || '').split('T')[0];
-        const fallbackDate = new Date().toISOString().split('T')[0];
+        const fallbackDate = getLocalDateString(new Date());
         loadCarWashAppointments(selectedDate || fallbackDate);
         appointmentDateTime.onchange = () => {
           const dateOnly = (appointmentDateTime.value || '').split('T')[0];
@@ -4215,7 +4944,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
           
           const selectedDate = (document.getElementById('appointmentDateTime')?.value || '').split('T')[0] || apt.date;
           const today = new Date();
-          const todayStr = today.toISOString().split('T')[0];
+          const todayStr = getLocalDateString(today);
           const isToday = selectedDate === todayStr;
           
           if (isToday) {
@@ -4309,9 +5038,14 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       now.setMinutes(roundedMinutes);
       now.setSeconds(0);
       now.setMilliseconds(0);
-      const offsetMs = now.getTimezoneOffset() * 60000;
-      const local = new Date(now.getTime() - offsetMs);
-      return local.toISOString().slice(0, 16);
+      
+      // Format as YYYY-MM-DDTHH:MM using local time
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes_str = String(now.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day}T${hours}:${minutes_str}`;
     }
 
     function blockManualInput(input) {
@@ -4335,17 +5069,23 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
 
     function normalizeDateStr(str) {
       if (!str) return '';
-      const d = new Date(str);
-      if (!isNaN(d.getTime())) return d.toISOString().split('T')[0];
-      return (str || '').toString().split('T')[0];
+      const cleaned = (str || '').toString().trim().replace(/^'+/, '');
+      const d = new Date(cleaned);
+      if (!isNaN(d.getTime())) return getLocalDateString(d);
+      return cleaned.split('T')[0];
     }
 
     function normalizeTimeStr(str) {
-      const m = (str || '').toString().match(/(\d{1,2}):(\d{2})/);
+      const m = (str || '').toString().trim().replace(/^'+/, '').match(/(\d{1,2}):(\d{2})/);
       if (!m) return '';
       const hh = String(parseInt(m[1], 10)).padStart(2, '0');
       const mm = String(parseInt(m[2], 10)).padStart(2, '0');
       return `${hh}:${mm}`;
+    }
+
+    function asSheetText(value) {
+      if (value === null || value === undefined) return '';
+      return `'${value}`;
     }
 
     async function postToSheetDb(row, apiUrl = SHEETDB_URL) {
@@ -4481,6 +5221,8 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
     async function handleCarWashSubmit() {
       const overlay = ensureCarWashModal();
       const message = overlay.querySelector('#cwMessage');
+      const submitBtn = overlay.querySelector('#cwSubmit');
+      const cancelBtn = overlay.querySelector('#cwCancel');
       setModalMessage(message, '', '');
 
       const datetimeVal = overlay.querySelector('#cwDatetime').value;
@@ -4517,17 +5259,40 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       });
 
       try {
+        // Disable actions and show saving state
+        submitBtn.disabled = true;
+        cancelBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.style.opacity = '0.6';
+        submitBtn.textContent = 'جاري الحفظ...';
+
         const res = await postToSheetDb(row);
         if (!res.ok) throw new Error('SheetDB request failed');
-        setModalMessage(message, 'success', 'تم حفظ الموعد بنجاح.');
+
+        // Loading then success states to mirror mechanical flow
+        setModalMessage(message, 'loading', '⏳ جاري التسجيل...');
+        await new Promise(resolve => setTimeout(resolve, 800));
+        setModalMessage(message, 'success', '✓ تم حفظ الموعد بنجاح!');
+
         if (document.getElementById('appointmentDateTime')) {
           document.getElementById('appointmentDateTime').value = `${dateOnly}T${timeOnly}`;
         }
         await loadCarWashAppointments(dateOnly);
-        setTimeout(() => overlay.classList.add('hidden'), 800);
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          // restore button text for next open
+          submitBtn.style.opacity = '1';
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          cancelBtn.disabled = false;
+        }, 1500);
       } catch (err) {
         console.error(err);
         setModalMessage(message, 'error', 'تعذر حفظ الموعد. تأكد من الاتصال وحاول مرة أخرى.');
+        submitBtn.disabled = false;
+        cancelBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.textContent = '✅ حفظ الموعد';
       }
     }
 
@@ -4572,7 +5337,12 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
                 <option value="ماي راديتر">ماي راديتر</option>
                 <option value="زيت بريك">زيت بريك</option>
                 <option value="زيت سكان">زيت سكان</option>
+                <option value="أخرى">أخرى</option>
               </select>
+            </div>
+            <div class="form-field hidden" id="mechServiceOtherField">
+              <label>حدد الخدمة الأخرى</label>
+              <input type="text" id="mechServiceOtherInput" class="form-control" placeholder="اكتب الخدمة المطلوبة" />
             </div>
             <div class="form-field">
               <label>الفنيين</label>
@@ -4598,6 +5368,21 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       overlay.querySelector('.modal-close').onclick = closeOverlay;
       overlay.querySelector('#mechCancel').onclick = closeOverlay;
       overlay.querySelector('#mechSubmit').onclick = handleMechanicalSubmit;
+
+      const serviceSelect = overlay.querySelector('#mechService');
+      const otherField = overlay.querySelector('#mechServiceOtherField');
+      const otherInput = overlay.querySelector('#mechServiceOtherInput');
+      const toggleOtherField = () => {
+        if (serviceSelect.value === 'أخرى') {
+          otherField.classList.remove('hidden');
+          otherInput.focus();
+        } else {
+          otherField.classList.add('hidden');
+          otherInput.value = '';
+        }
+      };
+      serviceSelect.onchange = toggleOtherField;
+      overlay._toggleMechOther = toggleOtherField;
 
       prepareDateTimeInput(overlay.querySelector('#mechDatetime'));
       return overlay;
@@ -4662,10 +5447,14 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       const serviceSelect = overlay.querySelector('#mechService');
       serviceSelect.value = defaultService;
 
+      const otherInput = overlay.querySelector('#mechServiceOtherInput');
+
       overlay.querySelector('#mechOrder').value = '';
       overlay.querySelector('#mechCustomer').value = '';
       overlay.querySelector('#mechArea').value = '';
       overlay.querySelector('#mechTechnician').value = 'يوسف و رحمه الله';
+      if (overlay._toggleMechOther) overlay._toggleMechOther();
+      if (otherInput) otherInput.value = '';
 
       setModalMessage(overlay.querySelector('#mechMessage'), '', '');
       overlay.classList.remove('hidden');
@@ -4674,17 +5463,28 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
     async function handleMechanicalSubmit() {
       const overlay = ensureMechanicalModal();
       const message = overlay.querySelector('#mechMessage');
+      const submitBtn = overlay.querySelector('#mechSubmit');
+      const cancelBtn = overlay.querySelector('#mechCancel');
       setModalMessage(message, '', '');
 
       const datetimeVal = overlay.querySelector('#mechDatetime').value;
       const orderVal = (overlay.querySelector('#mechOrder').value || '').trim();
       const customerVal = (overlay.querySelector('#mechCustomer').value || '').trim();
       const areaVal = (overlay.querySelector('#mechArea').value || '').trim();
-      const serviceVal = overlay.querySelector('#mechService').value;
+      const serviceSelect = overlay.querySelector('#mechService');
+      const serviceVal = serviceSelect.value;
+      const otherServiceVal = (overlay.querySelector('#mechServiceOtherInput')?.value || '').trim();
       const techVal = overlay.querySelector('#mechTechnician').value;
+
+      const finalService = serviceVal === 'أخرى' ? otherServiceVal : serviceVal;
 
       if (!datetimeVal || !orderVal || !customerVal || !areaVal || !serviceVal || !techVal) {
         setModalMessage(message, 'error', 'يرجى تعبئة جميع الحقول المطلوبة.');
+        return;
+      }
+
+      if (serviceVal === 'أخرى' && !otherServiceVal) {
+        setModalMessage(message, 'error', 'يرجى كتابة نوع الخدمة الأخرى.');
         return;
       }
 
@@ -4705,7 +5505,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
         qrOrder: orderVal,
         customerName: customerVal,
         area: areaVal,
-        service: serviceVal,
+        service: finalService,
         technician: techVal
       });
       
@@ -4716,7 +5516,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       console.log('  - Order:', orderVal);
       console.log('  - Customer:', customerVal);
       console.log('  - Area:', areaVal);
-      console.log('  - Service:', serviceVal);
+      console.log('  - Service:', finalService);
       console.log('  - Technician:', techVal);
       console.log('Row Object to Send:', row);
       console.log('Row Object Keys:', Object.keys(row));
@@ -4726,17 +5526,39 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       console.log('Expected Header:', window._mechAppointmentsHeader);
       console.log('========================================');
 
+      // Disable buttons and show loading state
+      submitBtn.disabled = true;
+      cancelBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      submitBtn.textContent = 'جاري الحفظ...';
+      
       try {
         const res = await postToSheetDb(row, MECHANICAL_SHEETDB_URL);
         console.log('SheetDB Response:', res.status, res.statusText);
         if (!res.ok) throw new Error('SheetDB request failed');
-        setModalMessage(message, 'success', 'تم حفظ الموعد بنجاح.');
+        
+        // Show loading message with spinner
+        setModalMessage(message, 'loading', '⏳ جاري التسجيل...');
+        
+        // Wait a moment to show the loading state
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
+        // Show success message with checkmark
+        setModalMessage(message, 'success', '✓ تم تسجيل الموعد بنجاح!');
+        
         await loadMechanicalAppointmentsData();
         await renderMechanicalAppointments();
-        setTimeout(() => overlay.classList.add('hidden'), 800);
+        
+        // Close modal after success
+        setTimeout(() => overlay.classList.add('hidden'), 1500);
       } catch (err) {
         console.error(err);
         setModalMessage(message, 'error', 'تعذر حفظ الموعد. تأكد من الاتصال وحاول مرة أخرى.');
+        // Re-enable buttons on error
+        submitBtn.disabled = false;
+        cancelBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.textContent = 'حفظ الموعد';
       }
     }
 
@@ -5570,6 +6392,454 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
 
     // Load data on page load
     loadAllSheets();
+
+    // Render Annual Subscription Interface (الاشتراك السنوي)
+    function renderAnnualSubscriptionInterface() {
+      const contentArea = document.getElementById('contentArea');
+      contentArea.innerHTML = `
+        <div class="form-section full-width">
+          <h3 class="section-title">الاشتراك السنوي</h3>
+          
+          <div class="btn-grid" style="grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px;">
+            <button class="btn-option" data-subscription="individual" style="padding: 16px; text-align: center; line-height: 1.5;">
+              <div style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">🚗</div>
+              <div style="font-size: 14px; font-weight: 700;">الاشتراك الفردي</div>
+              <div style="font-size: 12px; color: #999; margin-top: 6px;">سيارة واحدة</div>
+            </button>
+            <button class="btn-option" data-subscription="family" style="padding: 16px; text-align: center; line-height: 1.5;">
+              <div style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">👨‍👩‍👧‍👦</div>
+              <div style="font-size: 14px; font-weight: 700;">الاشتراك العائلي</div>
+              <div style="font-size: 12px; color: #999; margin-top: 6px;">3 سيارات</div>
+            </button>
+          </div>
+          
+          <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+            <button class="btn-option" id="termsButton" style="flex: 1; padding: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span>ℹ️</span>
+              <span>شروط وأحكام</span>
+            </button>
+            <button class="btn-option" id="detailsButton" style="flex: 1; padding: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span>ℹ️</span>
+              <span>تفاصيل الاشتراك</span>
+            </button>
+          </div>
+        </div>
+        
+        <div id="termsModal" class="modal-overlay hidden">
+          <div class="modal" style="max-height: 80vh; overflow-y: auto;">
+            <button type="button" class="modal-close" aria-label="إغلاق">×</button>
+            <h3 style="color: #F2BC1B; text-align: center; margin-bottom: 16px;">شروط وأحكام الاشتراك السنوي</h3>
+            <div id="termsContent" style="color: #ddd; font-size: 13px; line-height: 1.6;">
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">1. مدة اشتراك العضوية</strong> - سنة كاملة.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">2. تفعيل الاشتراك</strong> - يتم تفعيل الاشتراك بعد ثلاث أيام عمل من شراء العضوية.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">3. صلاحية الاشتراك</strong> - يجب أن يكون الاشتراك صالح عند طلب الخدمة.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">4. دفتر السيارة</strong> - يجب أن يكون دفتر السيارة صالح.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">5. تسجيل البيانات</strong> - الاشتراك للسيارات التي تم تسجيل بياناتها فقط.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">6. الأمن والسلامة</strong> - أولويتنا أمن وسلامة موظفين الشركة، بحيث لا يمكن استخدام الاشتراك في أماكن مجهولة وخطرة.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">7. خدمة نقل المركبة</strong> - غير متاحة / لا يمكن استخدامها في حال وقوف السيارة امام منزل العميل.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">8. الخدمات المتاحة</strong> - يمكن للمشترك الاستفادة من خدمات المساعدة على الطريق الآتية:
+                <ul style="margin: 8px 0 0 0; padding-right: 20px;">
+                  <li>خدمات نقل السيارة</li>
+                  <li>خدمات شحن البطارية</li>
+                  <li>خدمات تصليح الإطار</li>
+                  <li>خدمات تزويد الوقود</li>
+                  <li>خدمات فتح قفل السيارة</li>
+                </ul>
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">9. حالات الطوارئ</strong> - يمكن للمشترك الاستفادة من خدمات المساعدة على الطريق المشمولة في الاشتراك في حالة الطوارئ فقط.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">10. عمر المركبة</strong> - يجب ألا يكون موديل المركبة أقدم من 15 سنة.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">11. النقل على السطحات</strong> - الاشتراك لا يشمل نقل المركبة على السطحات الفل داون.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">12. خدمات نقل السيارة</strong> - تشمل نقل السيارة في حالة العطل الميكانيكي أو الكهربائي ولجهة واحدة محددة، ولا يشمل نقل السيارة من والى محلات البيع أو المزاد أو المهرجانات أو السكراب.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">13. حوادث الاصطدام</strong> - خدمات نقل السيارة لا يشملها نقلها من حادث.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">14. أنواع المركبات</strong> - تقتصر الخدمات على مركبات السيدان والدفع الرباعي. ولا تشمل المركبات التجارية والشاحنات.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">15. خدمات الوقود</strong> - تستخدم فقط عند توقف السيارة على الطريق، ويتم دفع قيمة الوقود من قبل المشترك.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">16. تبديل الإطارات</strong> - خدمات تبديل الإطارات في حال توفر الإطار الاحتياطي فقط.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">17. الكوارث الطبيعية</strong> - لا يتم توفير الخدمات في حالة الكوارث الطبيعية والحوادث المرورية وانغماس المركبات في الماء أو الرمال.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">18. المنطقة الجغرافية</strong> - يتم توفير الخدمات فقط داخل حدود دولة الكويت.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">19. عدد الطلبات اليومية</strong> - للمشترك الحق بطلب خدمة واحدة في اليوم الواحد.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">20. تجديد الرخصة</strong> - اشتراكات تجديد الرخصة تشمل فقط السيارات الخاصة ولا تشمل نقل خاص (الوانيت) ولا نقل خاص (باص خاص).
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">21. صلاحية التراخيص</strong> - تجديد ترخيص المركبة يشمل فقط التراخيص المنتهية من تاريخ 12/3/2020 إلى تاريخ 16/8/2020.
+              </div>
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">22. سوء الاستخدام</strong> - للمشترك الحق في استخدام العضوية وفي حالة ثبوت سوء الاستخدام بصورة تتنافى مع شروط وأحكام البرنامج، يحق لشركة بورتراج للجر والمساعدة للمركبات على الطريق إلغاء الاشتراك.
+              </div>
+              <div style="margin-bottom: 12px;">
+                <strong style="color: #F2BC1B;">23. الامتثال للشروط</strong> - كمستخدم لخدمات شركة بورتراج للجر والمساعدة للمركبات على الطريق وبقبول هذا العرض، يوافق المشترك على الامتثال لشروط وأحكام شركة بورتراج للجر والمساعدة للمركبات على الطريق.
+              </div>
+            </div>
+            <button id="termsCloseBtn" class="btn-primary" style="width: 100%; margin-top: 16px;">إغلاق</button>
+          </div>
+        </div>
+        
+        <div id="detailsModal" class="modal-overlay hidden">
+          <div class="modal" style="max-height: 80vh; overflow-y: auto;">
+            <button type="button" class="modal-close" aria-label="إغلاق">×</button>
+            <h3 style="color: #F2BC1B; text-align: center; margin-bottom: 16px;">تفاصيل الاشتراك السنوي</h3>
+            <div id="detailsContent" style="color: #ddd; font-size: 13px; line-height: 1.6;">
+              <div style="margin-bottom: 16px; padding: 12px; border-bottom: 2px solid #F2BC1B;">
+                <strong style="color: #F2BC1B; font-size: 14px;">الاشتراك السنوي - شركة بورتراج</strong>
+              </div>
+              
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">1. الاشتراك الفردي</strong> - لسيارة واحدة بقيمة <strong>15 د.ك</strong> لمدة سنة كاملة
+              </div>
+              <div style="margin-bottom: 16px; padding: 0 0 12px 0; border-bottom: 2px solid #F2BC1B;">
+                <strong style="color: #F2BC1B;">2. الاشتراك العائلي</strong> - ل 3 سيارات بقيمة <strong>40 د.ك</strong> لمدة سنة كاملة
+              </div>
+              
+              <div style="margin-bottom: 16px; padding: 12px; border-bottom: 2px solid #F2BC1B;">
+                <strong style="color: #F2BC1B; font-size: 14px;">الخدمات المشمولة (5 خدمات على مدار السنة)</strong>
+              </div>
+              
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">نقل السيارة (ونش/سطحة)</strong>
+                <div style="color: #bbb; margin-top: 4px;">من الطريق العام فقط. لا يشمل النقل عند البيت أو داخل الفريج أو عند القراج أو عند الشاليه (هذه الحالات عليها تكلفة إضافية)</div>
+              </div>
+              
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">البنشر (الاطار)</strong>
+                <div style="color: #bbb; margin-top: 4px;">يشمل تبديل السبير، الرقعة الأمريكية الخارجية، أو تعبئة الإطار بالهواء</div>
+              </div>
+              
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">شحن البطارية</strong>
+                <div style="color: #bbb; margin-top: 4px;">خدمة شحن البطارية عند الحاجة</div>
+              </div>
+              
+              <div style="margin-bottom: 12px; padding: 0 0 12px 0; border-bottom: 1px solid #333;">
+                <strong style="color: #F2BC1B;">البنزين</strong>
+                <div style="color: #bbb; margin-top: 4px;">نزودك بنزين بقيمة 1.5 د.ك من اختيارك. ما تدفع رسوم التوصيل - فقط رسوم البنزين (1.5 د.ك)</div>
+              </div>
+              
+              <div style="margin-bottom: 16px; padding: 0 0 12px 0; border-bottom: 2px solid #F2BC1B;">
+                <strong style="color: #F2BC1B;">فتح قفل الباب</strong>
+                <div style="color: #bbb; margin-top: 4px;">إذا لا سمح الله انقفلت السيارة والمفتاح داخلها، نفتحها لك بدون أي رسوم</div>
+              </div>
+              
+              <div style="margin-bottom: 12px; padding: 12px; background: #2a1a0f; border: 1px solid #f59e0b; border-radius: 6px;">
+                <strong style="color: #fbbf24;">⏰ ملاحظة مهمة:</strong>
+                <div style="font-size: 12px; color: #fde68a; margin-top: 6px;">الاشتراك يتفعل بعد الدفع ب 3 أيام عمل. كل 24 ساعة لك خدمة واحدة فقط.</div>
+              </div>
+            </div>
+            <button id="detailsCloseBtn" class="btn-primary" style="width: 100%; margin-top: 16px;">إغلاق</button>
+          </div>
+        </div>
+      `;
+
+      // Set up modal handlers
+      const termsModal = document.getElementById('termsModal');
+      const detailsModal = document.getElementById('detailsModal');
+      const termsBtn = document.getElementById('termsButton');
+      const detailsBtn = document.getElementById('detailsButton');
+      const termsCloseBtn = document.getElementById('termsCloseBtn');
+      const detailsCloseBtn = document.getElementById('detailsCloseBtn');
+      
+      termsBtn.onclick = () => termsModal.classList.remove('hidden');
+      detailsBtn.onclick = () => detailsModal.classList.remove('hidden');
+      termsCloseBtn.onclick = () => termsModal.classList.add('hidden');
+      detailsCloseBtn.onclick = () => detailsModal.classList.add('hidden');
+      
+      termsModal.onclick = (e) => { if (e.target === termsModal) termsModal.classList.add('hidden'); };
+      detailsModal.onclick = (e) => { if (e.target === detailsModal) detailsModal.classList.add('hidden'); };
+      
+      termsModal.querySelector('.modal-close').onclick = () => termsModal.classList.add('hidden');
+      detailsModal.querySelector('.modal-close').onclick = () => detailsModal.classList.add('hidden');
+
+      // Handle subscription selection
+      document.querySelectorAll('[data-subscription]').forEach(btn => {
+        btn.onclick = () => {
+          const subType = btn.dataset.subscription;
+          let url = '';
+          
+          if (subType === 'individual') {
+            url = 'https://subs-portarage.com/product/yamVB9PmR4';
+          } else if (subType === 'family') {
+            url = 'https://subs-portarage.com/product/oYvREz8MJE';
+          }
+          
+          if (url) {
+            // Open in new window
+            window.open(url, '_blank');
+          }
+        };
+      });
+    }
+
+    // Ensure and open the Groups Modal without replacing existing UI
+    function openGroupsModal() {
+      // If modal already exists, just show it
+      let modal = document.getElementById('groupsModal');
+      if (!modal) {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <div id="groupsModal" class="modal-overlay hidden">
+            <div class="modal" style="max-height: 80vh; overflow-y: auto;">
+              <button type="button" class="modal-close" aria-label="إغلاق">×</button>
+              <h3 style="color: #F2BC1B; text-align: center; margin-bottom: 16px;">أي قروب تبي؟</h3>
+              <div style="color:#ddd; font-size:13px;">
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
+                  <label for="groupCategorySelect" style="color:#fff;">التصنيف</label>
+                  <select id="groupCategorySelect" class="form-control" style="min-width: 220px;">
+                    <option value="أمريكي">أمريكي</option>
+                    <option value="ألماني">ألماني</option>
+                    <option value="ياباني">ياباني</option>
+                  </select>
+                </div>
+                <div id="groupsHeader" style="color:#bbb; font-size:12px; margin: 6px 0 10px 0;">اسماء القروبات</div>
+                <div id="groupsList" style="display:flex; flex-direction:column; gap:8px;"></div>
+                <button id="groupsCloseBtn" class="btn-primary" style="width: 100%; margin-top: 16px;">إغلاق</button>
+                <div id="groupsToast" style="display:none; text-align:center; color:#10b981; font-weight:700; margin-top:8px;">تم النسخ بنجاح</div>
+              </div>
+            </div>
+          </div>`;
+        document.body.appendChild(wrapper.firstElementChild);
+        modal = document.getElementById('groupsModal');
+
+        // Bind close handlers
+        const closeBtn = document.getElementById('groupsCloseBtn');
+        const categorySelect = document.getElementById('groupCategorySelect');
+        const listEl = document.getElementById('groupsList');
+
+        const GROUPS = {
+          'أمريكي': [
+            'Port + Al Radwan Parts German & American',
+            'Port + American Parts',
+            'Port + الاهلية',
+            'AUTO LAB (قطع غيار أمريكي الميلم)',
+            'Auto Spare Parts'
+          ],
+          'ألماني': [
+            'Port + Dar German Parts',
+            'علم الدار ألمانية + Port',
+            'ابو العيون قطع الماني – Abdullah',
+            'Port + Car Brak German Parts & Garage',
+            'Port + AL Jarah German',
+            'Port + Al Radwan Parts German & American',
+            'Auto Spare Parts'
+          ],
+          'ياباني': [
+            'Port + FK Parts',
+            'AUTO LAB (قطع غيار أمريكي الميلم)',
+            'Auto Spare Parts',
+            'Port + Al mish3al Parts Japan',
+            'برنس لقطع غيار نيسان وتويوتا أصلي',
+            'Port + حكيمي ياباني'
+          ]
+        };
+
+        function renderGroupItems(category) {
+          const header = document.getElementById('groupsHeader');
+          if (header) header.textContent = 'اسماء القروبات';
+          const items = GROUPS[category] || [];
+          listEl.innerHTML = items.map((name, idx) => `
+            <button class="btn-option" style="text-align:right;" data-group-name="${name}">${idx + 1}- ${name}</button>
+          `).join('');
+          const toastEl = document.getElementById('groupsToast');
+          listEl.querySelectorAll('[data-group-name]').forEach(btn => {
+            btn.onclick = async () => {
+              await copyToClipboard(btn.dataset.groupName);
+              if (toastEl) {
+                toastEl.textContent = 'تم النسخ بنجاح';
+                toastEl.style.display = 'block';
+                toastEl.style.opacity = '1';
+                setTimeout(() => {
+                  toastEl.style.opacity = '0';
+                  setTimeout(() => { toastEl.style.display = 'none'; }, 200);
+                }, 1500);
+              }
+            };
+          });
+        }
+
+        categorySelect.onchange = () => renderGroupItems(categorySelect.value);
+        renderGroupItems(categorySelect.value);
+
+        closeBtn.onclick = () => modal.classList.add('hidden');
+        modal.querySelector('.modal-close').onclick = () => modal.classList.add('hidden');
+        modal.onclick = (e) => { if (e.target === modal) modal.classList.add('hidden'); };
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    // Render Groups Interface with category dropdown and auto-copy
+    function renderGroupsInterface() {
+      const contentArea = document.getElementById('contentArea');
+      contentArea.innerHTML = `
+        <div class="form-section full-width">
+          <h3 class="section-title">القروبات</h3>
+          <div style="display:flex; gap:8px; align-items:center; justify-content:flex-end; margin-bottom:8px;">
+            <button id="openGroupsModalBtn" class="btn-option" style="padding:8px 12px;">اختر قروب</button>
+          </div>
+        </div>
+
+        <div id="groupsModal" class="modal-overlay hidden">
+          <div class="modal" style="max-height: 80vh; overflow-y: auto;">
+            <button type="button" class="modal-close" aria-label="إغلاق">×</button>
+            <h3 style="color: #F2BC1B; text-align: center; margin-bottom: 16px;">أي قروب تبي؟</h3>
+            <div style="color:#ddd; font-size:13px;">
+              <div style="display:flex; gap:8px; align-items:center; margin-bottom:12px;">
+                <label for="groupCategorySelect" style="color:#fff;">التصنيف</label>
+                <select id="groupCategorySelect" class="form-control" style="min-width: 220px;">
+                  <option value="أمريكي">أمريكي</option>
+                  <option value="ألماني">ألماني</option>
+                  <option value="ياباني">ياباني</option>
+                </select>
+              </div>
+              <div id="groupsHeader" style="color:#bbb; font-size:12px; margin: 6px 0 10px 0;">اسماء القروبات</div>
+              <div id="groupsList" style="display:flex; flex-direction:column; gap:8px;"></div>
+              <button id="groupsCloseBtn" class="btn-primary" style="width: 100%; margin-top: 16px;">إغلاق</button>
+              <div id="groupsToast" style="display:none; text-align:center; color:#10b981; font-weight:700; margin-top:8px;">تم النسخ بنجاح</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Show modal immediately for quicker UX
+      const modal = document.getElementById('groupsModal');
+      const openBtn = document.getElementById('openGroupsModalBtn');
+      const closeBtn = document.getElementById('groupsCloseBtn');
+      const categorySelect = document.getElementById('groupCategorySelect');
+      const listEl = document.getElementById('groupsList');
+
+      const GROUPS = {
+        'أمريكي': [
+          'Port + Al Radwan Parts German & American',
+          'Port + American Parts',
+          'Port + الاهلية',
+          'AUTO LAB (قطع غيار أمريكي الميلم)',
+          'Auto Spare Parts'
+        ],
+        'ألماني': [
+          'Port + Dar German Parts',
+          'علم الدار ألمانية + Port',
+          'ابو العيون قطع الماني – Abdullah',
+          'Port + Car Brak German Parts & Garage',
+          'Port + AL Jarah German',
+          'Port + Al Radwan Parts German & American',
+          'Auto Spare Parts'
+        ],
+        'ياباني': [
+          'Port + FK Parts',
+          'AUTO LAB (قطع غيار أمريكي الميلم)',
+          'Auto Spare Parts',
+          'Port + Al mish3al Parts Japan',
+          'برنس لقطع غيار نيسان وتويوتا أصلي',
+          'Port + حكيمي ياباني'
+        ]
+      };
+
+      function renderGroupItems(category) {
+        const header = document.getElementById('groupsHeader');
+        if (header) header.textContent = 'اسماء القروبات';
+        const items = GROUPS[category] || [];
+        listEl.innerHTML = items.map((name, idx) => `
+          <button class="btn-option" style="text-align:right;" data-group-name="${name}">${idx + 1}- ${name}</button>
+        `).join('');
+        const toastEl = document.getElementById('groupsToast');
+        listEl.querySelectorAll('[data-group-name]').forEach(btn => {
+          btn.onclick = async () => {
+            await copyToClipboard(btn.dataset.groupName);
+            if (toastEl) {
+              toastEl.textContent = 'تم النسخ بنجاح';
+              toastEl.style.display = 'block';
+              toastEl.style.opacity = '1';
+              setTimeout(() => {
+                toastEl.style.opacity = '0';
+                setTimeout(() => { toastEl.style.display = 'none'; }, 200);
+              }, 1500);
+            }
+          };
+        });
+      }
+
+      categorySelect.onchange = () => renderGroupItems(categorySelect.value);
+      renderGroupItems(categorySelect.value);
+
+      openBtn.onclick = () => modal.classList.remove('hidden');
+      closeBtn.onclick = () => modal.classList.add('hidden');
+      modal.querySelector('.modal-close').onclick = () => modal.classList.add('hidden');
+      modal.onclick = (e) => { if (e.target === modal) modal.classList.add('hidden'); };
+
+      // open immediately
+      modal.classList.remove('hidden');
+    }
+
+    function showToast(message) {
+      let el = document.getElementById('globalToast');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'globalToast';
+        el.className = 'prot-toast';
+        document.body.appendChild(el);
+      }
+      el.textContent = message;
+      el.style.display = 'block';
+      el.style.opacity = '1';
+      setTimeout(() => {
+        el.style.opacity = '0';
+        setTimeout(() => { el.style.display = 'none'; }, 200);
+      }, 1800);
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      } catch (e) {
+        console.warn('Clipboard copy failed', e);
+      }
+    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b5a74feb5de51ca',t:'MTc2NzAyMzQ2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b5a74feb5de51ca',t:'MTc2NzAyMzQ2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
