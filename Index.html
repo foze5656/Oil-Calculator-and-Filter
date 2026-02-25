@@ -416,6 +416,52 @@
       color: #888;
     }
 
+    /* Horizontal date picker */
+    .date-picker {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .date-picker::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .date-picker::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 6px;
+    }
+
+    .date-card {
+      min-width: 110px;
+      padding: 10px 8px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #141414;
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      scroll-snap-align: start;
+      white-space: nowrap;
+    }
+
+    .date-card:hover {
+      border-color: #555;
+    }
+
+    .date-card.active {
+      border-color: #F2BC1B;
+      color: #F2BC1B;
+      background: #101010;
+      box-shadow: 0 6px 16px rgba(242, 188, 27, 0.2);
+    }
+
     /* Modal styles (shared for carwash & mechanical booking) */
     .modal-overlay {
       position: fixed;
@@ -554,6 +600,220 @@
       background: #d9a616;
       transform: translateY(-2px);
     }
+
+    .btn-inline {
+      width: auto;
+      margin-top: 0;
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #F2BC1B;
+      border: 1px solid #F2BC1B;
+    }
+
+    .btn-outline:hover {
+      background: #F2BC1B;
+      color: #000;
+    }
+
+    .info-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #F2BC1B;
+      background: #0f0f0f;
+      color: #F2BC1B;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .info-icon:hover {
+      background: #F2BC1B;
+      color: #000;
+    }
+
+    .installments-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .installments-hero {
+      background: #0f0f0f;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .installments-hero-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .installments-hero-media img {
+      width: min(180px, 100%);
+      height: auto;
+      object-fit: contain;
+    }
+
+    .installments-title {
+      color: #F2BC1B;
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .installments-subtitle {
+      color: #999;
+      font-size: 13px;
+    }
+
+    .installments-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .installments-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .installments-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .installments-pay {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #999;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .installments-how {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #999;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .installments-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .installments-image-wrapper {
+      width: min(420px, 100%);
+      aspect-ratio: 1 / 1;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .installments-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .installments-how-body {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 16px;
+      align-items: start;
+      margin-top: 12px;
+    }
+
+    .installments-how-modal {
+      width: min(720px, 96%);
+    }
+
+    .installments-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .installments-step {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      color: #ccc;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .installments-step.active {
+      background: #F2BC1B;
+      color: #000;
+      border-color: #F2BC1B;
+      font-weight: 700;
+    }
+
+    .installments-carousel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .carousel-image-wrapper {
+      width: min(480px, 100%);
+      aspect-ratio: 1 / 1;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .carousel-step-indicator {
+      color: #999;
+      font-size: 13px;
+    }
     
     /* Back Button */
     .btn-back {
@@ -647,6 +907,107 @@
       color: #F2BC1B;
       font-weight: 600;
       font-size: 15px;
+    }
+
+    .driver-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .driver-filters .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 160px;
+    }
+
+    .driver-filters .filter-group label {
+      font-size: 13px;
+      color: #999;
+      font-weight: 600;
+    }
+
+    .muted-text {
+      color: #999;
+      font-size: 13px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      min-width: 80px;
+    }
+
+    .status-in {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .status-soon {
+      background: rgba(245, 158, 11, 0.18);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.5);
+    }
+
+    .status-off {
+      background: rgba(239, 68, 68, 0.18);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.45);
+    }
+
+    .status-out {
+      background: rgba(148, 163, 184, 0.15);
+      color: #cbd5f5;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .status-ending {
+      background: rgba(245, 158, 11, 0.18);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.5);
+    }
+
+    .status-problem {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(239, 68, 68, 0.35),
+        rgba(239, 68, 68, 0.35) 6px,
+        rgba(59, 130, 246, 0.35) 6px,
+        rgba(59, 130, 246, 0.35) 12px
+      );
+      color: #fff;
+      border: 1px solid rgba(239, 68, 68, 0.7);
+      animation: statusPulse 1.8s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    .status-badge.status-problem {
+      min-width: 84px;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.25); }
+    }
+
+    .export-mode .export-hide {
+      display: none !important;
+    }
+
+    .lop-preview {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
     }
     
     /* Info Boxes */
@@ -1425,6 +1786,41 @@
       </div>
     </div>
   </div>
+
+  <!-- Installments How-To Modal -->
+  <div id="installmentHowModal" class="modal-overlay hidden" data-modal-id="installmentHowModal">
+    <div class="modal installments-how-modal">
+      <button class="modal-close" data-close-modal="installmentHowModal">×</button>
+      <h3>كيفية عمل طلب جديد للأقساط</h3>
+      <div class="installments-how-body">
+        <div class="installments-steps" id="installmentsSteps"></div>
+        <div class="installments-carousel">
+          <div class="carousel-image-wrapper">
+            <img id="installmentsHowImage" src="" alt="شرح طلب جديد للأقساط">
+          </div>
+          <div class="carousel-step-indicator" id="installmentsStepIndicator">الخطوة 1 من 5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Installments Payment Flow Modal -->
+  <div id="installmentPayModal" class="modal-overlay hidden" data-modal-id="installmentPayModal">
+    <div class="modal">
+      <button class="modal-close" data-close-modal="installmentPayModal">×</button>
+      <h3>شلون يدفع العميل</h3>
+      <div class="info-box" style="margin-top: 10px;">
+        <ol style="margin: 0; padding-right: 18px; line-height: 1.8;">
+          <li>يوصله مسج SMS، يضغط عليه.</li>
+          <li>يطلب منه رقم التلفون، وبعدين الـ OTP.</li>
+          <li>يطلب منه الرقم المدني ويوصله مصادقة على هويتي.</li>
+          <li>يطلب منه الإيميل ويوصله الـ OTP على نفس الإيميل.</li>
+          <li>تظهر له كافة البيانات: كل شهر كم راح يدفع.</li>
+          <li>طرق الدفع المتاحة: كي نت، آبل باي، فيزا.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
   
   <div class="dashboard-wrapper" id="dashboardWrapper"><!-- Sidebar -->
    <aside class="sidebar" id="sidebar">
@@ -1436,6 +1832,8 @@
     <div class="service-submenu" id="staffSubmenu">
      <div class="service-item submenu-item" data-service="staff_centers"><span class="label">مراكز الطلبات</span>
      </div>
+      <div class="service-item submenu-item" data-service="driver_status"><span class="label">جدولة السائقين</span>
+      </div>
     </div>
     <div class="service-item" data-service="tow"><span class="icon">🚚</span> <span class="label">ونشات</span>
     </div>
@@ -1462,6 +1860,8 @@
      </div>
      <div class="service-item submenu-item" data-service="tireSheet"><span class="label">شيت التواير</span>
      </div>
+      <div class="service-item submenu-item" data-service="tire_lop"><span class="label">فواتير التواير</span>
+      </div>
      <div class="service-item submenu-item" data-service="balance"><span class="label">ميزان وتركيب</span>
      </div>
      <div class="service-item submenu-item" data-service="ringRepair"><span class="label">تصليح الرنقات</span>
@@ -1477,6 +1877,8 @@
     </div>
     <div class="service-item" data-service="annualSubscription"><span class="icon">📅</span> <span class="label">الاشتراك السنوي</span>
     </div>
+    <div class="service-item" data-service="installments"><span class="icon">💳</span> <span class="label">الاقساط</span>
+    </div>
    </aside><!-- Main Content -->
    <main class="main-content"><!-- Header Bar -->
     <header class="header-bar">
@@ -1489,10 +1891,10 @@
     <div id="contentArea" class="content-area">
      <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px;">
       <div style="font-size: 48px; margin-bottom: 16px;">
-       📊
+       🌙
       </div>
-      <h3 style="color: #F2BC1B; font-size: 18px; margin-bottom: 8px;">مرحباً بك في لوحة التحكم</h3>
-      <p style="color: #999; font-size: 14px;">اختر خدمة من القائمة الجانبية للبدء</p>
+      <h3 style="color: #F2BC1B; font-size: 18px; margin-bottom: 8px;">مبارك عليكم الشهر </h3>
+      <p style="color: #999; font-size: 14px;">اختر خدمة الي محتاجها من القائمه الي على اليمين </p>
      </div>
     </div>
    </main>
@@ -1653,6 +2055,15 @@
         }
       });
     })();
+
+    // Auto-refresh the full page every 5 hours
+    setInterval(() => {
+      try {
+        window.location.reload();
+      } catch (e) {
+        console.error('Auto refresh failed', e);
+      }
+    }, 5 * 60 * 60 * 1000);
     
     // ========== ORIGINAL APP CODE ==========
     
@@ -1841,10 +2252,103 @@
       
       // Show the main dashboard again
       document.getElementById('dashboardWrapper').style.display = 'grid';
-      
-      // Don't reset the service - keep the current state
-      // The user will see the same service they had before opening the iframe
+
+      // Reset to home screen
+      currentService = '';
+      document.querySelectorAll('.service-item').forEach(item => item.classList.remove('active'));
+      const serviceTitle = document.getElementById('serviceTitle');
+      if (serviceTitle) serviceTitle.textContent = 'اختر خدمة من القائمة';
+      const contentArea = document.getElementById('contentArea');
+      if (contentArea) {
+        contentArea.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px;">
+            <div style="font-size: 48px; margin-bottom: 16px;">🌙</div>
+            <h3 style="color: #F2BC1B; font-size: 18px; margin-bottom: 8px;">مبارك عليكم الشهر </h3>
+            <p style="color: #999; font-size: 14px;">اختر خدمة الي محتاجها من القائمه الي على اليمين </p>
+          </div>
+        `;
+      }
     };
+
+    // Simple modal helpers (installments info)
+    function openSimpleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.remove('hidden');
+
+      if (modalId === 'installmentHowModal') {
+        initInstallmentCarousel();
+        showInstallmentStep(0);
+      }
+    }
+
+    function closeSimpleModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) modal.classList.add('hidden');
+    }
+
+    const installmentHowImages = [
+      'https://f.top4top.io/p_3698ieqsv1.jpeg',
+      'https://j.top4top.io/p_369872oe41.png',
+      'https://k.top4top.io/p_3698hqeux1.png',
+      'https://j.top4top.io/p_3698miggh3.png',
+      'https://k.top4top.io/p_3698bhkkb2.png'
+    ];
+    let currentInstallmentStep = 0;
+
+    function initInstallmentCarousel() {
+      if (window._installmentCarouselInit) return;
+
+      const stepsContainer = document.getElementById('installmentsSteps');
+      if (!stepsContainer) return;
+
+      stepsContainer.innerHTML = installmentHowImages
+        .map((_, i) => `<div class="installments-step" data-step="${i}">الخطوة ${i + 1}</div>`)
+        .join('');
+
+      stepsContainer.addEventListener('click', (e) => {
+        const stepEl = e.target.closest('.installments-step');
+        if (!stepEl) return;
+        const stepIndex = parseInt(stepEl.dataset.step, 10);
+        if (!Number.isNaN(stepIndex)) showInstallmentStep(stepIndex);
+      });
+
+      window._installmentCarouselInit = true;
+    }
+
+    function showInstallmentStep(index) {
+      const total = installmentHowImages.length;
+      if (!total) return;
+
+      currentInstallmentStep = (index + total) % total;
+
+      const imageEl = document.getElementById('installmentsHowImage');
+      const indicatorEl = document.getElementById('installmentsStepIndicator');
+      const stepEls = document.querySelectorAll('#installmentsSteps .installments-step');
+
+      if (imageEl) imageEl.src = installmentHowImages[currentInstallmentStep];
+      if (indicatorEl) indicatorEl.textContent = `الخطوة ${currentInstallmentStep + 1} من ${total}`;
+
+      stepEls.forEach((el, idx) => {
+        if (idx === currentInstallmentStep) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const closeBtn = e.target.closest('[data-close-modal]');
+      if (closeBtn) {
+        closeSimpleModal(closeBtn.dataset.closeModal);
+        return;
+      }
+
+      if (e.target.classList && e.target.classList.contains('modal-overlay')) {
+        const modalId = e.target.dataset.modalId;
+        if (modalId) closeSimpleModal(modalId);
+      }
+    });
 
     // Service Selection
     document.addEventListener('click', (e) => {
@@ -1878,15 +2382,18 @@
           'unlock': 'فتح قفل السيارة',
           'tireSheet': 'شيت التواير',
           'tireIncrease': 'زيادات التواير',
+          'tire_lop': 'فواتير التواير',
           'puncture': 'بنشر',
           'balance': 'ميزان وتركيب',
           'ringRepair': 'تصليح الرنقات',
           'mechanical': 'خدمات ميكانيكية',
           'staff_centers': 'مراكز الطلبات',
+          'driver_status': 'جدول السائقين',
           'carwash': 'غسيل السيارات',
           'protection': 'الحمايه والتغيم',
           'insurance': 'تأمينات',
-          'annualSubscription': 'الاشتراك السنوي'
+          'annualSubscription': 'الاشتراك السنوي',
+          'installments': 'الاقساط'
         };
         
         document.getElementById('serviceTitle').textContent = serviceTitles[currentService];
@@ -1916,6 +2423,9 @@
           case 'tireIncrease':
             openFullscreenIframe('https://portaragetiers.netlify.app/', 'زيادات التواير');
             break;
+          case 'tire_lop':
+            renderLopInterface();
+            break;
           case 'puncture':
             renderPunctureService();
             break;
@@ -1931,6 +2441,9 @@
           case 'staff_centers':
             renderStaffInterface();
             break;
+          case 'driver_status':
+            renderDriverStatusInterface();
+            break;
           case 'carwash':
             renderCarWashInterface();
             break;
@@ -1943,6 +2456,9 @@
           case 'annualSubscription':
             renderAnnualSubscriptionInterface();
             break;
+          case 'installments':
+            renderInstallmentsInterface();
+            break;
         }
       }
     });
@@ -1951,6 +2467,44 @@
     function renderBatterySubscriptionInterface() {
       renderServiceWithDatalist('اشتراك بطارية', 'خدمات5', [0, 1, 2, 4, 5, 6], 
         '<div class="info-box">في حال العميل يبي فحص بطارية: 10 د.ك تنخصم من سعر البطارية</div>');
+    }
+
+    // Render Installments Interface
+    function renderInstallmentsInterface() {
+      const contentArea = document.getElementById('contentArea');
+      contentArea.innerHTML = `
+        <div class="form-section full-width installments-card">
+          <h3 class="section-title">الاقساط</h3>
+          <div class="installments-hero">
+            <div class="installments-hero-media">
+              <img src="https://i.ibb.co/ch9MtQzZ/Whats-App-Image-2026-02-15-at-21-39-49.png" alt="Taly">
+            </div>
+            <div class="installments-title">اخذ الحين ودفع تالي</div>
+          </div>
+          <div class="installments-actions">
+            <div class="installments-actions-row">
+              <div class="installments-pay">
+                <span>شلون يدفع العميل</span>
+                <button class="info-icon" id="installmentsPayBtn" title="شلون يدفع العميل" aria-label="شلون يدفع العميل">i</button>
+              </div>
+              <div class="installments-buttons">
+                <a class="btn-primary btn-inline" href="https://taly.io/partners/auth/login" target="_blank" rel="noopener">تسجيل طلب اقساط</a>
+                <a class="btn-primary btn-inline btn-outline" href="https://taly.io/partners/terms-condition" target="_blank" rel="noopener">الشروط والاحكام</a>
+              </div>
+              <div class="installments-how">
+                <button class="info-icon" id="installmentsHowBtn" title="كيفية عمل طلب جديد للاقساط" aria-label="كيفية عمل طلب جديد للاقساط">i</button>
+                <span>كيفية عمل طلب جديد للأقساط</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const howBtn = document.getElementById('installmentsHowBtn');
+      if (howBtn) howBtn.onclick = () => openSimpleModal('installmentHowModal');
+
+      const payBtn = document.getElementById('installmentsPayBtn');
+      if (payBtn) payBtn.onclick = () => openSimpleModal('installmentPayModal');
     }
 
     // Render Staff Interface
@@ -1985,6 +2539,622 @@
       window.staffIntervalId = setInterval(() => {
         loadStaffData();
       }, 5 * 60 * 1000);
+    }
+
+    // Render Driver Status Interface (جدول السائقين)
+    function renderDriverStatusInterface() {
+      if (window.driverStatusIntervalId) clearInterval(window.driverStatusIntervalId);
+      if (window.driverStatusRefreshId) clearInterval(window.driverStatusRefreshId);
+
+      const contentArea = document.getElementById('contentArea');
+      contentArea.innerHTML = `
+        <div class="form-section full-width">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <h3 id="driverTitle" class="section-title" style="margin:0;">جدول السائقين</h3>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <button id="driverLanguageToggle" class="btn-back" style="padding:6px 12px;font-size:12px;">English</button>
+              <button id="driverDownloadBtn" class="btn-back" style="padding:6px 12px;font-size:12px;display:none;">تحميل كصورة</button>
+              <button id="driverSheetBtn" class="btn-back" style="padding:6px 12px;font-size:12px;display:none;">فتح Google Sheet</button>
+            </div>
+          </div>
+          <div class="driver-filters">
+            <div class="filter-group">
+              <label id="driverViewFilterLabel" for="driverViewFilter">فلتر العرض</label>
+              <select id="driverViewFilter" class="form-control">
+                <option value="all">الكل</option>
+                <option value="now">المتواجدون الآن</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label id="driverTypeFilterLabel" for="driverTypeFilter">نوع المركبة</label>
+              <select id="driverTypeFilter" class="form-control">
+                <option value="all">الكل</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-section full-width">
+          <div class="table-scroll" style="max-height:420px;">
+            <table class="data-table" id="driverStatusTable">
+              <thead>
+                <tr>
+                  <th id="driverHeaderIndex">#</th>
+                  <th id="driverHeaderName">اسم السائق</th>
+                  <th id="driverHeaderType">النوع</th>
+                  <th id="driverHeaderShift">وقت بداية الدوام</th>
+                  <th id="driverHeaderStatus" class="export-hide">الحالة</th>
+                  <th id="driverHeaderOff" class="export-hide">الإجازات</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      const viewFilter = document.getElementById('driverViewFilter');
+      const typeFilter = document.getElementById('driverTypeFilter');
+      const languageToggle = document.getElementById('driverLanguageToggle');
+      const downloadBtn = document.getElementById('driverDownloadBtn');
+      const sheetBtn = document.getElementById('driverSheetBtn');
+      if (viewFilter) viewFilter.onchange = () => renderDriverStatusTable();
+      if (typeFilter) typeFilter.onchange = () => renderDriverStatusTable();
+      if (languageToggle) languageToggle.onclick = () => {
+        const nextLang = (window._driverStatusLang || 'ar') === 'ar' ? 'en' : 'ar';
+        window._driverStatusLang = nextLang;
+        updateDriverStatusLanguageUI(nextLang);
+        populateDriverTypeFilter(window._driverStatusRows || []);
+        renderDriverStatusTable();
+      };
+
+      window._driverStatusLang = 'ar';
+      updateDriverStatusLanguageUI('ar');
+
+      const currentUser = (localStorage.getItem('currentUser') || '').trim().toLowerCase();
+      const isIdris = currentUser === 'idris';
+      if (downloadBtn) downloadBtn.style.display = isIdris ? 'inline-flex' : 'none';
+      if (sheetBtn) sheetBtn.style.display = isIdris ? 'inline-flex' : 'none';
+      if (downloadBtn && isIdris) downloadBtn.onclick = () => exportDriverTableAsImage();
+      if (sheetBtn && isIdris) sheetBtn.onclick = () => {
+        const sheetId = '1nhjZLD1VoYYusxKi4wUFIP3fdToVlrIREy31WZdipWo';
+        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/edit?usp=sharing`;
+        window.open(url, '_blank');
+      };
+
+      loadDriverStatusData(true);
+    }
+
+    async function loadDriverStatusData(force = false) {
+      try {
+        const sheetId = '1nhjZLD1VoYYusxKi4wUFIP3fdToVlrIREy31WZdipWo';
+        const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+        const res = await fetch(sheetUrl, { cache: 'no-cache' });
+
+        if (!res.ok) throw new Error('failed to load drivers sheet');
+
+        const text = await res.text();
+        if (!force && window._driverStatusRawText && window._driverStatusRawText === text) {
+          renderDriverStatusTable();
+          return;
+        }
+        window._driverStatusRawText = text;
+
+        const jsonString = text.substring(47).slice(0, -2);
+        const data = JSON.parse(jsonString);
+        const rows = (data.table && data.table.rows) ? data.table.rows : [];
+
+        const drivers = rows.map(row => {
+          const c = row.c || [];
+          return {
+            nameEn: getCellDisplay(c[0]),
+            nameAr: getCellDisplay(c[1]),
+            type: getCellDisplay(c[2]),
+            shiftRaw: getCellValue(c[3]),
+            shiftDisplay: getCellDisplay(c[3]),
+            off1Raw: getCellValue(c[4]),
+            off1Display: getCellDisplay(c[4]),
+            off2Raw: getCellValue(c[5]),
+            off2Display: getCellDisplay(c[5]),
+            problem: getCellDisplay(c[6])
+          };
+        }).filter(r => r.nameEn || r.nameAr || r.type || r.shiftDisplay);
+
+        window._driverStatusRows = drivers;
+        populateDriverTypeFilter(drivers);
+
+        renderDriverStatusTable();
+      } catch (err) {
+        console.error(err);
+        const tbody = document.querySelector('#driverStatusTable tbody');
+        if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:#f88;padding:12px">خطأ في تحميل البيانات</td></tr>';
+      }
+    }
+
+    function populateDriverTypeFilter(rows) {
+      const select = document.getElementById('driverTypeFilter');
+      if (!select) return;
+      const lang = window._driverStatusLang || 'ar';
+      const current = select.value || 'all';
+      const rawTypes = Array.from(new Set(rows.map(r => r.type).filter(Boolean)));
+      const options = buildDriverTypeFilterOptions(rawTypes, lang);
+      const allLabel = lang === 'en' ? 'All' : 'الكل';
+      select.innerHTML = `<option value="all">${allLabel}</option>` +
+        options.map(opt => `<option value="${escapeHtml(opt.value)}">${escapeHtml(opt.label)}</option>`).join('');
+      select.value = options.some(opt => opt.value === current) ? current : 'all';
+    }
+
+    function renderDriverStatusTable() {
+      const tbody = document.querySelector('#driverStatusTable tbody');
+      if (!tbody) return;
+
+      const rows = window._driverStatusRows || [];
+      if (rows.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="color:#999;padding:12px">لا توجد بيانات</td></tr>';
+        return;
+      }
+
+      const viewFilter = document.getElementById('driverViewFilter');
+      const typeFilter = document.getElementById('driverTypeFilter');
+      const view = viewFilter ? viewFilter.value : 'all';
+      const type = typeFilter ? typeFilter.value : 'all';
+      const lang = window._driverStatusLang || 'ar';
+      const now = new Date();
+
+      const computed = rows.map(r => {
+        const status = getDriverStatus(r, now);
+        return { ...r, status };
+      }).filter(r => {
+        if (type !== 'all' && !matchesDriverTypeFilter(r.type, type)) return false;
+        if (view === 'now' && !(r.status.key === 'in' || r.status.key === 'soon' || r.status.key === 'ending')) return false;
+        return true;
+      });
+
+      if (computed.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="color:#999;padding:12px">لا توجد نتائج مطابقة</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = '';
+      computed.forEach((r, idx) => {
+        const tr = document.createElement('tr');
+        const shiftDisplay = formatShiftDisplay(r, now);
+        const daysOff = formatDaysOffDisplay(r);
+        const name = getDriverNameByLanguage(r, lang);
+        const typeDisplay = formatDriverType(r.type, lang);
+        const problemText = (r.problem || '').toString().trim();
+        const statusLabel = problemText ? (lang === 'en' ? 'Out of Service' : 'متعطل') : getDriverStatusLabel(r.status.key, lang);
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td>${escapeHtml(name || '-')}</td>
+          <td>${escapeHtml(typeDisplay || '-')}</td>
+          <td>${escapeHtml(shiftDisplay)}</td>
+          <td class="export-hide"><span class="status-badge ${problemText ? 'status-problem' : `status-${r.status.key}`}" ${problemText ? `data-problem="${escapeHtml(problemText)}"` : ''}>${statusLabel}</span></td>
+          <td class="export-hide">${escapeHtml(daysOff)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      tbody.querySelectorAll('.status-problem').forEach(el => {
+        el.onclick = () => openDriverProblemModal(el.getAttribute('data-problem') || '');
+        el.title = 'اضغط لعرض السبب';
+      });
+    }
+
+    function getDriverNameByLanguage(row, lang) {
+      if (lang === 'en') return row.nameEn || row.nameAr || '';
+      return row.nameAr || row.nameEn || '';
+    }
+
+    function formatDriverType(value, lang) {
+      if (!value) return '';
+      if (lang !== 'ar') return value;
+      const map = {
+        'NORMAL TOWTRUK': 'ونش عادي',
+        'BIG TOWTRUK': 'ونش العريض',
+        'FULL DOWN': 'فل داون',
+        'FULL DOWN CLOSE': 'فل داون مصكر',
+        'BATTERY BUS': 'باص البطاريات',
+        'TIER BUS': 'باص التواير',
+        'MECHANIC BUS': 'باص المكانيكيه',
+        'WASH BUS': 'باص الغسيل',
+        'STORE': 'امين المخزن',
+        'OFFICE BOY': 'تي بوي'
+      };
+      const key = value.toString().trim().toUpperCase();
+      return map[key] || value;
+    }
+
+    function buildDriverTypeFilterOptions(rawTypes, lang) {
+      const options = [];
+      const upperTypes = rawTypes.map(t => t.toString().trim().toUpperCase());
+      const hasTow = upperTypes.includes('NORMAL TOWTRUK') || upperTypes.includes('BIG TOWTRUK');
+      const hasFullDown = upperTypes.includes('FULL DOWN') || upperTypes.includes('FULL DOWN CLOSE');
+
+      if (hasTow) {
+        options.push({
+          value: 'group_tow',
+          label: lang === 'en' ? 'Tow Trucks' : 'ونش'
+        });
+      }
+
+      if (hasFullDown) {
+        options.push({
+          value: 'group_full_down',
+          label: lang === 'en' ? 'Full Down' : 'فل داون'
+        });
+      }
+
+      const grouped = new Set(['NORMAL TOWTRUK', 'BIG TOWTRUK', 'FULL DOWN', 'FULL DOWN CLOSE']);
+      const otherTypes = rawTypes
+        .filter(t => !grouped.has(t.toString().trim().toUpperCase()))
+        .sort((a, b) => a.localeCompare(b, 'ar'))
+        .map(t => ({ value: t, label: formatDriverType(t, lang) || t }));
+
+      return options.concat(otherTypes);
+    }
+
+    function matchesDriverTypeFilter(rowType, filterValue) {
+      if (!rowType) return false;
+      const typeKey = rowType.toString().trim().toUpperCase();
+      if (filterValue === 'group_tow') {
+        return typeKey === 'NORMAL TOWTRUK' || typeKey === 'BIG TOWTRUK';
+      }
+      if (filterValue === 'group_full_down') {
+        return typeKey === 'FULL DOWN' || typeKey === 'FULL DOWN CLOSE';
+      }
+      return rowType === filterValue;
+    }
+
+    function getDriverStatus(row, now) {
+      if (isOffToday(row, now)) {
+        return { key: 'off' };
+      }
+
+      const shiftStartToday = parseShiftTimeToDate(row.shiftRaw, row.shiftDisplay, now);
+      if (!shiftStartToday) {
+        return { key: 'out' };
+      }
+
+      const duty = getDutyWindow(now, shiftStartToday);
+      if (duty && now >= duty.start && now < duty.end) {
+        const remainingMs = duty.end - now;
+        if (remainingMs <= 60 * 60 * 1000) {
+          return { key: 'ending' };
+        }
+        return { key: 'in' };
+      }
+
+      if (isSoon(now, shiftStartToday)) {
+        return { key: 'soon' };
+      }
+
+      return { key: 'out' };
+    }
+
+    function getDriverStatusLabel(key, lang) {
+      if (lang === 'en') {
+        const map = { in: 'In Duty', soon: 'Available', ending: 'Ending Soon', off: 'Off', out: 'Off Duty' };
+        return map[key] || 'Off Duty';
+      }
+      const map = { in: 'في العمل', soon: 'متاحة', ending: 'ينتهي قريباً', off: 'إجازة', out: 'خارج الدوام' };
+      return map[key] || 'خارج الدوام';
+    }
+
+    function updateDriverStatusLanguageUI(lang) {
+      const toggle = document.getElementById('driverLanguageToggle');
+      const title = document.getElementById('driverTitle');
+      const downloadBtn = document.getElementById('driverDownloadBtn');
+      const sheetBtn = document.getElementById('driverSheetBtn');
+      const viewLabel = document.getElementById('driverViewFilterLabel');
+      const typeLabel = document.getElementById('driverTypeFilterLabel');
+      const headerIndex = document.getElementById('driverHeaderIndex');
+      const headerName = document.getElementById('driverHeaderName');
+      const headerType = document.getElementById('driverHeaderType');
+      const headerShift = document.getElementById('driverHeaderShift');
+      const headerStatus = document.getElementById('driverHeaderStatus');
+      const headerOff = document.getElementById('driverHeaderOff');
+      const viewSelect = document.getElementById('driverViewFilter');
+
+      if (lang === 'en') {
+        if (toggle) toggle.textContent = 'العربية';
+        if (title) title.textContent = 'Drivers Table';
+        if (downloadBtn) downloadBtn.textContent = 'Download Image';
+        if (sheetBtn) sheetBtn.textContent = 'Open Google Sheet';
+        if (viewLabel) viewLabel.textContent = 'View Filter';
+        if (typeLabel) typeLabel.textContent = 'Vehicle Type';
+        if (headerIndex) headerIndex.textContent = '#';
+        if (headerName) headerName.textContent = 'Driver Name';
+        if (headerType) headerType.textContent = 'Type';
+        if (headerShift) headerShift.textContent = 'Shift Start';
+        if (headerStatus) headerStatus.textContent = 'Status';
+        if (headerOff) headerOff.textContent = 'Days Off';
+        if (viewSelect) {
+          const allOption = viewSelect.querySelector('option[value="all"]');
+          const nowOption = viewSelect.querySelector('option[value="now"]');
+          if (allOption) allOption.textContent = 'All';
+          if (nowOption) nowOption.textContent = 'Available Now';
+        }
+      } else {
+        if (toggle) toggle.textContent = 'English';
+        if (title) title.textContent = 'جدول السائقين';
+        if (downloadBtn) downloadBtn.textContent = 'تحميل كصورة';
+        if (sheetBtn) sheetBtn.textContent = 'فتح Google Sheet';
+        if (viewLabel) viewLabel.textContent = 'فلتر العرض';
+        if (typeLabel) typeLabel.textContent = 'نوع المركبة';
+        if (headerIndex) headerIndex.textContent = '#';
+        if (headerName) headerName.textContent = 'اسم السائق';
+        if (headerType) headerType.textContent = 'النوع';
+        if (headerShift) headerShift.textContent = 'وقت بداية الدوام';
+        if (headerStatus) headerStatus.textContent = 'الحالة';
+        if (headerOff) headerOff.textContent = 'الإجازات';
+        if (viewSelect) {
+          const allOption = viewSelect.querySelector('option[value="all"]');
+          const nowOption = viewSelect.querySelector('option[value="now"]');
+          if (allOption) allOption.textContent = 'الكل';
+          if (nowOption) nowOption.textContent = 'المتواجدون الآن';
+        }
+      }
+    }
+
+    async function exportDriverTableAsImage() {
+      const table = document.getElementById('driverStatusTable');
+      if (!table) return;
+
+      const scroll = table.closest('.table-scroll');
+      if (!scroll) return;
+
+      const previousMaxHeight = scroll.style.maxHeight;
+      const previousOverflow = scroll.style.overflowY;
+      scroll.classList.add('export-mode');
+      scroll.style.maxHeight = 'none';
+      scroll.style.overflowY = 'visible';
+
+      try {
+        await ensureHtml2Canvas();
+        const canvas = await html2canvas(scroll, {
+          backgroundColor: '#1a1a1a',
+          scale: 2,
+          useCORS: true
+        });
+        const link = document.createElement('a');
+        const dateStr = new Date().toISOString().slice(0, 10);
+        link.download = `drivers-table-${dateStr}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        console.error('Export failed', err);
+      } finally {
+        scroll.style.maxHeight = previousMaxHeight;
+        scroll.style.overflowY = previousOverflow;
+        scroll.classList.remove('export-mode');
+      }
+    }
+
+    function ensureHtml2Canvas() {
+      return new Promise((resolve, reject) => {
+        if (window.html2canvas) return resolve();
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('Failed to load html2canvas'));
+        document.head.appendChild(script);
+      });
+    }
+
+    function ensureDriverProblemModal() {
+      let overlay = document.getElementById('driverProblemModal');
+      if (overlay) return overlay;
+
+      overlay = document.createElement('div');
+      overlay.id = 'driverProblemModal';
+      overlay.className = 'modal-overlay hidden';
+      overlay.innerHTML = `
+        <div class="modal">
+          <button type="button" class="modal-close" aria-label="إغلاق">×</button>
+          <h3>سبب التعطل</h3>
+          <div id="driverProblemText" style="color:#fff;font-size:14px;line-height:1.6;"></div>
+          <div class="modal-actions">
+            <button id="driverProblemClose" class="btn-secondary" type="button" style="min-width:120px;">إغلاق</button>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+
+      const closeOverlay = () => overlay.classList.add('hidden');
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlay(); });
+      overlay.querySelector('.modal-close').onclick = closeOverlay;
+      overlay.querySelector('#driverProblemClose').onclick = closeOverlay;
+
+      return overlay;
+    }
+
+    function openDriverProblemModal(text) {
+      const overlay = ensureDriverProblemModal();
+      const textEl = overlay.querySelector('#driverProblemText');
+      textEl.textContent = text || 'لا يوجد سبب';
+      overlay.classList.remove('hidden');
+    }
+
+    function isOffToday(row, now) {
+      const offDates = [row.off1Raw, row.off2Raw];
+      for (const value of offDates) {
+        const d = parseOffDate(value);
+        if (d && isSameDate(d, now)) return true;
+      }
+      return false;
+    }
+
+    function parseOffDate(value) {
+      if (!value) return null;
+      if (value instanceof Date) return value;
+      if (typeof value === 'number') {
+        if (value > 10000000000) return new Date(value);
+      }
+      if (typeof value === 'string') {
+        const g = parseGoogleDate(value);
+        if (g) return g;
+        const iso = new Date(value);
+        if (!isNaN(iso)) return iso;
+        const m = value.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+        if (m) {
+          const day = parseInt(m[1], 10);
+          const month = parseInt(m[2], 10) - 1;
+          const yearRaw = parseInt(m[3], 10);
+          const year = yearRaw < 100 ? 2000 + yearRaw : yearRaw;
+          return new Date(year, month, day);
+        }
+      }
+      return null;
+    }
+
+    function isSameDate(a, b) {
+      return a.getFullYear() === b.getFullYear() &&
+             a.getMonth() === b.getMonth() &&
+             a.getDate() === b.getDate();
+    }
+
+    function parseShiftTimeToDate(value, display, now) {
+      if (!value && !display) return null;
+
+      if (value instanceof Date) {
+        const d = new Date(now);
+        d.setHours(value.getHours(), value.getMinutes(), 0, 0);
+        return d;
+      }
+
+      if (typeof value === 'number' && value >= 0 && value < 1) {
+        const totalMinutes = Math.round(value * 24 * 60);
+        const h = Math.floor(totalMinutes / 60);
+        const m = totalMinutes % 60;
+        const d = new Date(now);
+        d.setHours(h, m, 0, 0);
+        return d;
+      }
+
+      const textToParse = (display || value || '').toString().trim();
+      const googleDate = parseGoogleDate(textToParse);
+      if (googleDate) {
+        const d = new Date(now);
+        d.setHours(googleDate.getHours(), googleDate.getMinutes(), 0, 0);
+        return d;
+      }
+
+      const timeMatch = textToParse.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);
+      if (timeMatch) {
+        let hour = parseInt(timeMatch[1], 10);
+        const minute = parseInt(timeMatch[2] || '0', 10);
+        const ampm = timeMatch[3] ? timeMatch[3].toUpperCase() : null;
+        if (ampm) {
+          if (ampm === 'PM' && hour < 12) hour += 12;
+          if (ampm === 'AM' && hour === 12) hour = 0;
+        }
+        const d = new Date(now);
+        d.setHours(hour, minute, 0, 0);
+        return d;
+      }
+
+      return null;
+    }
+
+    function convertAmPmToArabic(text) {
+      if (!text) return text;
+      return text
+        .replace(/\bAM\b/gi, 'صباحاً')
+        .replace(/\bPM\b/gi, 'مساءً')
+        .replace(/\bA\.M\.\b/gi, 'صباحاً')
+        .replace(/\bP\.M\.\b/gi, 'مساءً');
+    }
+
+    function isInDuty(now, shiftStartToday) {
+      const window = getDutyWindow(now, shiftStartToday);
+      if (!window) return false;
+      return now >= window.start && now < window.end;
+    }
+
+    function getDutyWindow(now, shiftStartToday) {
+      const startToday = shiftStartToday;
+      const endToday = addHours(startToday, 12);
+      if (now >= startToday && now < endToday) {
+        return { start: startToday, end: endToday };
+      }
+
+      const startYesterday = new Date(startToday);
+      startYesterday.setDate(startYesterday.getDate() - 1);
+      const endYesterday = addHours(startYesterday, 12);
+      if (now >= startYesterday && now < endYesterday) {
+        return { start: startYesterday, end: endYesterday };
+      }
+
+      return null;
+    }
+
+    function isSoon(now, shiftStartToday) {
+      const nextStart = new Date(shiftStartToday);
+      if (now >= nextStart) nextStart.setDate(nextStart.getDate() + 1);
+      const diffMs = nextStart - now;
+      return diffMs > 0 && diffMs <= 60 * 60 * 1000;
+    }
+
+    function addHours(date, hours) {
+      const d = new Date(date);
+      d.setHours(d.getHours() + hours);
+      return d;
+    }
+
+    function formatShiftDisplay(row, now) {
+      if (row.shiftDisplay) return convertAmPmToArabic(row.shiftDisplay.toString());
+      const parsed = parseShiftTimeToDate(row.shiftRaw, row.shiftDisplay, now);
+      if (!parsed) return '-';
+      return convertAmPmToArabic(parsed.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }));
+    }
+
+    function formatDaysOffDisplay(row) {
+      const list = [];
+      const d1 = formatAnyDateForDisplay(row.off1Display || row.off1Raw);
+      const d2 = formatAnyDateForDisplay(row.off2Display || row.off2Raw);
+      if (d1) list.push(d1);
+      if (d2) list.push(d2);
+      return list.length ? list.join(' ، ') : '-';
+    }
+
+    function formatAnyDateForDisplay(value) {
+      if (!value) return '';
+      if (value instanceof Date) return value.toLocaleDateString('ar-KW');
+      if (typeof value === 'number' && value > 10000000000) {
+        return new Date(value).toLocaleDateString('ar-KW');
+      }
+      if (typeof value === 'string') {
+        const g = parseGoogleDate(value);
+        if (g) return g.toLocaleDateString('ar-KW');
+        const d = new Date(value);
+        if (!isNaN(d)) return d.toLocaleDateString('ar-KW');
+        return value;
+      }
+      return String(value);
+    }
+
+    function parseGoogleDate(value) {
+      if (typeof value !== 'string') return null;
+      const match = value.match(/Date\((\d{4}),\s*(\d{1,2}),\s*(\d{1,2})(?:,\s*(\d{1,2}),\s*(\d{1,2}),\s*(\d{1,2}))?\)/);
+      if (!match) return null;
+      const year = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10);
+      const day = parseInt(match[3], 10);
+      const hour = parseInt(match[4] || '0', 10);
+      const minute = parseInt(match[5] || '0', 10);
+      const second = parseInt(match[6] || '0', 10);
+      return new Date(year, month, day, hour, minute, second);
+    }
+
+    function getCellValue(cell) {
+      return cell ? cell.v : null;
+    }
+
+    function getCellDisplay(cell) {
+      if (!cell) return '';
+      if (cell.f !== null && cell.f !== undefined) return cell.f;
+      return cell.v !== null && cell.v !== undefined ? String(cell.v) : '';
     }
 
     async function loadStaffData(force = false) {
@@ -2238,6 +3408,12 @@
               <tbody id="towResultBody">
               </tbody>
             </table>
+          </div>
+          <div id="towPortarageNote" class="info-box hidden" style="margin-top: 10px;">
+            في حال العميل طلب ونش<br>
+            (تبلغون العميل نقدر نوفر لك سيارة فولفو مع سايق يوصلك لاي منطقة داخل الكويت السعر الخدمة 10 دك لاي منطقة (باستثناء المناطق الي عقب الاحمدي 18 دك <br><br>
+            في حال العميل سأل عن مدة الوصول 15 ل 25 اقصى مدة والخدمة متوفرة 24 ساعة على مدار اليوم<br><br>
+            ضروري تبلغون العميل انه في حال انتظار لسايق اول ربع ساعة مجانية وبعد الربع ساعة 0.150 فلس (لكل دقيقه) ويدفعها وهو بالطريج قبل لا يوصل وجهته
           </div>
         </div>
       `;
@@ -2692,9 +3868,11 @@
     function calculateTowPrice() {
       const routes = getTowRoutes(formData.company, formData.towType);
       const route = routes.find(r => r.from === formData.from && r.to === formData.to);
+      const portarageNote = document.getElementById('towPortarageNote');
       
       if (!route) {
         document.getElementById('towResultSection').classList.add('hidden');
+        if (portarageNote) portarageNote.classList.add('hidden');
         return;
       }
       
@@ -2822,6 +4000,14 @@
       
       tbody.innerHTML = rows;
       document.getElementById('towResultSection').classList.remove('hidden');
+
+      if (portarageNote) {
+        if (formData.companyArabic === 'بورتراج' && (formData.towType === 'normal' || formData.towType === 'flatbed')) {
+          portarageNote.classList.remove('hidden');
+        } else {
+          portarageNote.classList.add('hidden');
+        }
+      }
       
       setTimeout(() => {
         const resultSection = document.getElementById('towResultSection');
@@ -3227,6 +4413,701 @@
       });
     }
 
+
+
+    const LOP_TEMPLATE_URL = '';
+    const LOP_LOGO_DATA_URL = '';
+    let lopLogoDataCache = '';
+    const LOP_TEMPLATE_HTML = `
+      <div class="lop-invoice">
+        <style>
+          .lop-invoice {
+            background: #0b0b0b;
+            border: 1px solid #2b2b2b;
+            border-radius: 12px;
+            padding: 18px;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            color: #f5f5f5;
+            width: 100%;
+            box-sizing: border-box;
+          }
+          .lop-head {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 14px;
+          }
+          .lop-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #f2bc1b;
+            letter-spacing: 0.3px;
+          }
+          .lop-title-small {
+            font-size: 11px;
+            color: #cfcfcf;
+            text-align: right;
+            font-weight: 600;
+          }
+          .lop-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+          }
+          .lop-meta .card {
+            background: #141414;
+            border: 1px solid #2b2b2b;
+            border-radius: 8px;
+            padding: 10px 12px;
+          }
+          .lop-meta .label {
+            font-size: 11px;
+            color: #9a9a9a;
+            margin-bottom: 6px;
+          }
+          .lop-meta .value {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+          }
+          .lop-client {
+            text-align: right;
+            margin-bottom: 10px;
+            color: #f2bc1b;
+            font-weight: 700;
+          }
+          .lop-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #101010;
+            border: 1px solid #2b2b2b;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+          .lop-table th,
+          .lop-table td {
+            border-bottom: 1px solid #2b2b2b;
+            padding: 10px 8px;
+            text-align: center;
+            font-size: 12px;
+          }
+          .lop-table thead th {
+            background: #f2bc1b;
+            color: #101010;
+            font-weight: 800;
+          }
+          .lop-table tbody tr.data-row td {
+            background: #151515;
+            color: #ffffff;
+            font-weight: 600;
+          }
+          .lop-table tbody tr.empty-row td {
+            background: #101010;
+            color: #6b6b6b;
+            height: 28px;
+          }
+          .lop-note {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-top: 12px;
+            align-items: center;
+          }
+          .lop-note .note-box {
+            background: #141414;
+            border: 1px solid #2b2b2b;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #cfcfcf;
+          }
+          .lop-note .totals {
+            display: grid;
+            gap: 8px;
+            min-width: 180px;
+          }
+          .lop-note .total-row {
+            background: #101010;
+            border: 1px solid #2b2b2b;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-weight: 700;
+            color: #f2bc1b;
+            text-align: center;
+          }
+          .lop-note .total-row span[dir="ltr"] {
+            unicode-bidi: isolate;
+          }
+          .lop-footer {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 11px;
+            color: #9a9a9a;
+          }
+        </style>
+        <div class="lop-head">
+          <div class="lop-title">Portarage Roadside Assistance Company</div>
+          <div class="lop-title-small" data-cell="COMPANY_NAME">MOHAMED NASER AL-SAYER &amp; SONSEST. CO. WLL</div>
+        </div>
+        <div class="lop-meta">
+          <div class="card">
+            <div class="label">PHONE</div>
+            <div class="value">22663333</div>
+          </div>
+          <div class="card">
+            <div class="label">DATE</div>
+            <div class="value" data-cell="DATE"></div>
+          </div>
+          <div class="card">
+            <div class="label">QR NUMBER</div>
+            <div class="value" data-cell="QR_TOP"></div>
+          </div>
+        </div>
+        <table class="lop-table">
+          <thead>
+            <tr>
+              <th>TIRE SIZE</th>
+              <th>PATTERN</th>
+              <th>YEAR</th>
+              <th>ORIGIN</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody data-items-body></tbody>
+        </table>
+        <div class="lop-note">
+          <div class="note-box">
+            <strong>Note:</strong> Payment shall be 15 days upon receipt of the items above.
+          </div>
+          <div class="totals">
+            <div class="total-row">Subtotal <span dir="ltr">($)</span>: <span data-cell="SUBTOTAL">0.00</span></div>
+            <div class="total-row">Discount <span dir="ltr">($)</span>: <span data-cell="DISCOUNT">0.00</span></div>
+            <div class="total-row">Total Amount <span dir="ltr">(KWD)</span>: <span data-cell="TOTAL">0.00</span></div>
+          </div>
+        </div>
+        <div class="lop-footer">System Generated No signature required</div>
+      </div>
+    `;
+    let lopTemplateCache = '';
+
+    function renderLopInterface() {
+      const contentArea = document.getElementById('contentArea');
+      contentArea.innerHTML = `
+        <div class="form-section full-width">
+          <h3 class="section-title">فواتير التواير</h3>
+          <div class="form-grid">
+            <button id="lopSelectYokohama" class="btn-option" style="padding:14px;">يوكاهما</button>
+            <button id="lopSelectBridgestone" class="btn-option" style="padding:14px;">بريدجيستون</button>
+          </div>
+        </div>
+      `;
+
+      const yokohamaBtn = document.getElementById('lopSelectYokohama');
+      const bridgestoneBtn = document.getElementById('lopSelectBridgestone');
+      if (yokohamaBtn) yokohamaBtn.onclick = () => renderLopForm('yokohama');
+      if (bridgestoneBtn) bridgestoneBtn.onclick = () => renderLopForm('bridgestone');
+    }
+
+    function renderLopForm(company) {
+      const contentArea = document.getElementById('contentArea');
+      if (!contentArea) return;
+      contentArea.innerHTML = `
+        <div class="form-section full-width">
+          <div style="display:flex;gap:8px;align-items:center;justify-content:flex-start;margin-bottom:8px;">
+            <button id="lopBackBtn" class="btn-back" style="padding:6px 12px;">رجوع</button>
+          </div>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>رقم QR</label>
+              <input id="lopQr" class="form-control" placeholder="رقم QR">
+            </div>
+            <div class="form-field">
+              <label>التاريخ</label>
+              <input id="lopDate" type="date" class="form-control">
+            </div>
+          </div>
+          <div id="lopItems" style="margin-top:10px;display:flex;flex-direction:column;gap:10px;"></div>
+          <datalist id="lopOriginOptions"></datalist>
+          <div style="display:flex;gap:8px;margin-top:10px;">
+            <button id="lopAddItemBtn" class="btn-option">+</button>
+            <button id="lopGenerateBtn" class="btn-primary">تحميل الصورة</button>
+          </div>
+        </div>
+        <div id="lopPreviewSection" class="form-section full-width hidden">
+          <div id="lopPreviewCapture" class="lop-preview"></div>
+        </div>
+      `;
+
+      const backBtn = document.getElementById('lopBackBtn');
+      const generateBtn = document.getElementById('lopGenerateBtn');
+      const addItemBtn = document.getElementById('lopAddItemBtn');
+      const qrInput = document.getElementById('lopQr');
+      const itemsContainer = document.getElementById('lopItems');
+      const originDatalist = document.getElementById('lopOriginOptions');
+
+      const originOptions = [
+        { ar: 'تايلندي', en: 'Thailand' },
+        { ar: 'امريكي', en: 'USA' },
+        { ar: 'هانقاري', en: 'Hungary' },
+        { ar: 'بولندي', en: 'Poland' },
+        { ar: 'فلبيني', en: 'Philippines' },
+        { ar: 'ياباني', en: 'Japan' },
+        { ar: 'فيتنامي', en: 'Vietnam' }
+      ];
+
+      if (originDatalist) {
+        originDatalist.innerHTML = originOptions.map(o => `<option value="${o.ar}"></option>`).join('');
+      }
+
+      let pendingDeleteRow = null;
+
+      const ensureLopDeleteModal = () => {
+        let modal = document.getElementById('lopDeleteModal');
+        if (modal) return modal;
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <div id="lopDeleteModal" class="logout-modal-overlay hidden">
+            <div class="logout-modal">
+              <div class="logout-modal-icon">⚠️</div>
+              <h2 class="logout-modal-title">تأكيد الحذف</h2>
+              <p class="logout-modal-message">هل أنت متأكد من حذف هذا المنتج؟</p>
+              <div class="logout-modal-buttons">
+                <button id="lopDeleteCancel" class="logout-modal-btn logout-modal-btn-cancel">إلغاء</button>
+                <button id="lopDeleteConfirm" class="logout-modal-btn logout-modal-btn-confirm">حذف</button>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(wrapper.firstElementChild);
+        modal = document.getElementById('lopDeleteModal');
+
+        const cancelBtn = document.getElementById('lopDeleteCancel');
+        const confirmBtn = document.getElementById('lopDeleteConfirm');
+
+        if (cancelBtn) cancelBtn.onclick = () => modal.classList.add('hidden');
+        if (confirmBtn) confirmBtn.onclick = () => {
+          modal.classList.add('hidden');
+          if (pendingDeleteRow) {
+            pendingDeleteRow.remove();
+            pendingDeleteRow = null;
+            updateLopPreview();
+            updateAddButtonVisibility();
+            updateDeleteButtonsVisibility();
+          }
+        };
+
+        modal.onclick = (e) => {
+          if (e.target === modal) modal.classList.add('hidden');
+        };
+
+        return modal;
+      };
+
+      const openLopDeleteConfirm = (rowEl) => {
+        pendingDeleteRow = rowEl;
+        const modal = ensureLopDeleteModal();
+        modal.classList.remove('hidden');
+      };
+
+      const addItemRow = (index) => {
+        if (!itemsContainer) return;
+        const row = document.createElement('div');
+        row.className = 'form-grid';
+        row.dataset.itemIndex = String(index);
+        row.innerHTML = `
+          <div class="form-field">
+            <label>مقاس الإطار</label>
+            <input id="lopTireSize${index}" data-field="tireSize" class="form-control" placeholder="مقاس الإطار">
+          </div>
+          <div class="form-field">
+            <label>النقشة</label>
+            <input id="lopPattern${index}" data-field="pattern" class="form-control" placeholder="النقشة">
+          </div>
+          <div class="form-field">
+            <label>السنة</label>
+            <input id="lopYear${index}" data-field="year" class="form-control" placeholder="السنة">
+          </div>
+          <div class="form-field">
+            <label>المنشأ</label>
+            <input id="lopOrigin${index}" data-field="origin" class="form-control" placeholder="المنشأ" list="lopOriginOptions">
+          </div>
+          <div class="form-field">
+            <label>الكمية</label>
+            <input id="lopQty${index}" data-field="qty" type="number" class="form-control" placeholder="الكمية">
+          </div>
+          <div class="form-field" style="display:flex;gap:6px;align-items:flex-end;">
+            <div style="flex:1;">
+              <label>سعر الوحدة</label>
+              <input id="lopUnitPrice${index}" data-field="unitPrice" type="number" class="form-control" placeholder="سعر الوحدة">
+            </div>
+            <button type="button" class="btn-option" data-remove-item="${index}" title="حذف" aria-label="حذف" style="width:38px;height:38px;min-width:38px;padding:0;display:flex;align-items:center;justify-content:center;">🗑️</button>
+          </div>
+        `;
+        itemsContainer.appendChild(row);
+      };
+
+      if (itemsContainer) {
+        itemsContainer.innerHTML = '';
+        addItemRow(1);
+      }
+
+      const updateAddButtonVisibility = () => {
+        if (!itemsContainer || !addItemBtn) return;
+        const existing = itemsContainer.querySelectorAll('[data-item-index]').length;
+        addItemBtn.style.display = existing >= 2 ? 'none' : 'inline-flex';
+      };
+
+      const updateDeleteButtonsVisibility = () => {
+        if (!itemsContainer) return;
+        const existing = itemsContainer.querySelectorAll('[data-item-index]').length;
+        itemsContainer.querySelectorAll('[data-remove-item]').forEach(btn => {
+          btn.style.display = existing > 1 ? 'inline-flex' : 'none';
+        });
+      };
+
+      if (itemsContainer) {
+        itemsContainer.addEventListener('click', (e) => {
+          const removeBtn = e.target.closest('[data-remove-item]');
+          if (!removeBtn) return;
+          const rowEl = removeBtn.closest('[data-item-index]');
+          if (rowEl) openLopDeleteConfirm(rowEl);
+        });
+      }
+
+      if (addItemBtn) addItemBtn.onclick = () => {
+        if (!itemsContainer) return;
+        const existing = itemsContainer.querySelectorAll('[data-item-index]').length;
+        if (existing >= 2) return;
+        addItemRow(existing + 1);
+        updateLopPreview();
+        updateAddButtonVisibility();
+        updateDeleteButtonsVisibility();
+      };
+
+      const collectLopValues = () => {
+        const items = [];
+        if (itemsContainer) {
+          const rows = Array.from(itemsContainer.querySelectorAll('[data-item-index]'));
+          rows.forEach(rowEl => {
+            const size = rowEl.querySelector('[data-field="tireSize"]')?.value || '';
+            const pattern = rowEl.querySelector('[data-field="pattern"]')?.value || '';
+            const year = rowEl.querySelector('[data-field="year"]')?.value || '';
+            const origin = rowEl.querySelector('[data-field="origin"]')?.value || '';
+            const qty = rowEl.querySelector('[data-field="qty"]')?.value || '';
+            const unitPrice = rowEl.querySelector('[data-field="unitPrice"]')?.value || '';
+            if (size || pattern || year || origin || qty || unitPrice) {
+              items.push({ size, pattern, year, origin, qty, unitPrice });
+            }
+          });
+        }
+        return {
+          company,
+          qrNumber: document.getElementById('lopQr')?.value || '',
+          date: document.getElementById('lopDate')?.value || '',
+          items
+        };
+      };
+
+      const updateLopPreview = async () => {
+        const values = collectLopValues();
+        const previewSection = document.getElementById('lopPreviewSection');
+        const previewCapture = document.getElementById('lopPreviewCapture');
+        if (!previewSection || !previewCapture) return;
+        if (!values.qrNumber && !values.date && values.items.length === 0) return;
+
+        previewSection.classList.remove('hidden');
+        if (!previewCapture.querySelector('.lop-invoice')) {
+          const templateHtml = await getLopTemplateHtml();
+          if (!templateHtml) return;
+          previewCapture.innerHTML = templateHtml;
+        }
+        await hydrateLopLogo(previewCapture);
+        fillLopTemplate(previewCapture, values);
+      };
+
+      if (backBtn) backBtn.onclick = () => renderLopInterface();
+
+      if (generateBtn) generateBtn.onclick = async () => {
+        await updateLopPreview();
+        await exportLopImage();
+      };
+
+      if (qrInput && generateBtn) {
+        qrInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            generateBtn.click();
+          }
+        });
+      }
+
+      const dateInput = document.getElementById('lopDate');
+      if (dateInput) {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        dateInput.value = `${yyyy}-${mm}-${dd}`;
+        dateInput.addEventListener('input', () => updateLopPreview());
+      }
+
+      if (qrInput) qrInput.addEventListener('input', () => updateLopPreview());
+      if (itemsContainer) itemsContainer.addEventListener('input', () => updateLopPreview());
+      updateAddButtonVisibility();
+      updateDeleteButtonsVisibility();
+    }
+
+    async function getLopTemplateHtml() {
+      let html = '';
+
+      if (typeof LOP_TEMPLATE_HTML === 'string') {
+        html = LOP_TEMPLATE_HTML;
+      }
+
+      if (!html && lopTemplateCache) {
+        html = lopTemplateCache;
+      }
+
+      if (!html && LOP_TEMPLATE_URL) {
+        try {
+          const res = await fetch(LOP_TEMPLATE_URL, { cache: 'no-store' });
+          if (res.ok) {
+            html = await res.text();
+            lopTemplateCache = html;
+          }
+        } catch (e) {
+          console.warn('Failed to load LOP template URL', e);
+        }
+      }
+
+      if (!html) {
+        const templateEl = document.getElementById('lopTemplate');
+        if (templateEl) {
+          html = templateEl.innerHTML || templateEl.textContent || '';
+        }
+      }
+
+      if (!html || !html.trim()) return '';
+
+      if (html.includes('&lt;') || html.includes('&gt;')) {
+        const decoder = document.createElement('textarea');
+        decoder.innerHTML = html;
+        html = decoder.value;
+      }
+
+      return html;
+    }
+
+    function setText(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+
+    async function exportLopImage() {
+      const target = document.getElementById('lopPreviewCapture');
+      if (!target) return;
+      if (!target.querySelector('table')) {
+        showToast('لا يوجد قالب صالح للتصدير');
+        return;
+      }
+      try {
+        await ensureLopLogoLoaded(target);
+        await ensureHtml2Canvas();
+        const canvas = await html2canvas(target, {
+          backgroundColor: '#0b0b0b',
+          scale: 2,
+          useCORS: true
+        });
+        const link = document.createElement('a');
+        const qrValue = document.getElementById('lopQr')?.value?.trim() || '';
+        const safeName = qrValue ? qrValue.replace(/[^\w\-]+/g, '_') : new Date().toISOString().slice(0, 10);
+        link.download = `${safeName}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        console.error('Export failed', err);
+      }
+    }
+
+    function fillLopTemplate(container, values) {
+      const table = container.querySelector('table.waffle') || container.querySelector('table');
+      if (!table) return;
+
+      if (!values) return;
+
+      const companyName = values.company === 'bridgestone'
+        ? 'Bridgestone Tire Distribution Co W.L.L.'
+        : 'MOHAMED NASER AL-SAYER & SONSEST. CO. WLL';
+      setLopText(container, 'COMPANY_NAME', companyName);
+      setLopText(container, 'QR_TOP', values.qrNumber);
+      setLopText(container, 'DATE', values.date ? formatDateDisplay(values.date) : formatDateDisplay(new Date()));
+      const items = Array.isArray(values.items) ? values.items : [];
+      let subtotal = 0;
+
+      const itemsBody = table.querySelector('[data-items-body]');
+      if (itemsBody) {
+        itemsBody.innerHTML = '';
+        const list = items.length ? items : [{}];
+
+        list.forEach((item) => {
+          const qtyNum = parseFloat(item.qty);
+          const unitNum = parseFloat(item.unitPrice);
+          const hasAmount = Number.isFinite(qtyNum) && Number.isFinite(unitNum);
+          const amount = hasAmount ? qtyNum * unitNum : null;
+          if (hasAmount) subtotal += amount;
+
+          const originDisplay = mapOriginToEnglish(item.origin);
+
+          const row = document.createElement('tr');
+          row.className = 'data-row';
+          row.innerHTML = `
+            <td>${item.size || ''}</td>
+            <td>${item.pattern || ''}</td>
+            <td>${item.year || ''}</td>
+            <td>${originDisplay || ''}</td>
+            <td>${item.qty || ''}</td>
+            <td>${formatMoney(item.unitPrice) || ''}</td>
+            <td>${formatMoney(amount) || ''}</td>
+          `;
+          itemsBody.appendChild(row);
+        });
+
+        for (let i = 0; i < 2; i++) {
+          const emptyRow = document.createElement('tr');
+          emptyRow.className = 'empty-row';
+          emptyRow.innerHTML = '<td colspan="7"></td>';
+          itemsBody.appendChild(emptyRow);
+        }
+      }
+
+      const subtotalText = formatMoney(subtotal) || '0.00';
+      setLopText(container, 'SUBTOTAL', subtotalText);
+      setLopText(container, 'DISCOUNT', '0.00');
+      setLopText(container, 'TOTAL', subtotalText);
+    }
+
+    async function hydrateLopLogo(container) {
+      const logo = container.querySelector('#lopLogoImg');
+      if (!logo) return;
+      if (LOP_LOGO_DATA_URL) {
+        logo.src = LOP_LOGO_DATA_URL;
+        return;
+      }
+      if (lopLogoDataCache) {
+        logo.src = lopLogoDataCache;
+        return;
+      }
+      const fallback = 'https://i.top4top.io/p_35860o72q1.png';
+      try {
+        const res = await fetch(fallback, { mode: 'cors', cache: 'force-cache' });
+        if (res.ok) {
+          const blob = await res.blob();
+          const dataUrl = await blobToDataUrl(blob);
+          lopLogoDataCache = dataUrl;
+          logo.src = dataUrl;
+          return;
+        }
+      } catch (e) {
+        console.warn('Failed to load logo as data url', e);
+      }
+      logo.src = fallback;
+    }
+
+    function ensureLopLogoLoaded(container) {
+      return new Promise(resolve => {
+        const logo = container.querySelector('#lopLogoImg');
+        if (!logo) return resolve();
+        if (logo.complete) return resolve();
+        logo.onload = () => resolve();
+        logo.onerror = () => resolve();
+      });
+    }
+
+    function setLopText(root, key, value) {
+      const cell = root.querySelector(`[data-cell="${key}"]`);
+      if (cell) cell.textContent = value || '';
+    }
+
+    function blobToDataUrl(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    function formatMoney(value) {
+      const num = typeof value === 'string' ? parseFloat(value) : value;
+      if (!Number.isFinite(num)) return '';
+      return num.toFixed(2);
+    }
+
+    function mapOriginToEnglish(value) {
+      if (!value) return '';
+      const text = value.toString().trim();
+      const map = {
+        'تايلندي': 'Thailand',
+        'امريكي': 'USA',
+        'هانقاري': 'Hungary',
+        'بولندي': 'Poland',
+        'فلبيني': 'Philippines',
+        'ياباني': 'Japan',
+        'فيتنامي': 'Vietnam'
+      };
+      return map[text] || text;
+    }
+
+    function formatDateDisplay(value) {
+      if (!value) return '';
+      if (value instanceof Date) {
+        const yyyy = value.getFullYear();
+        const mm = String(value.getMonth() + 1).padStart(2, '0');
+        const dd = String(value.getDate()).padStart(2, '0');
+        return `${dd}/${mm}/${yyyy}`;
+      }
+      if (typeof value === 'string') {
+        const parts = value.split('-');
+        if (parts.length === 3) {
+          return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+        return value;
+      }
+      return String(value);
+    }
+
+    function setLopCellValue(table, rowNumber, colNumber, value) {
+      const directCell = table.querySelector(`[data-cell="${columnNumberToLetter(colNumber)}${rowNumber}"]`);
+      if (directCell) {
+        directCell.textContent = value;
+        return;
+      }
+      const rows = Array.from(table.querySelectorAll('tr'));
+      const row = rows[rowNumber - 1];
+      if (!row) return;
+
+      const cells = Array.from(row.querySelectorAll('td, th'));
+      const cell = cells[colNumber - 1];
+      if (!cell) return;
+
+      cell.textContent = value;
+    }
+
+    function columnNumberToLetter(num) {
+      let letter = '';
+      let n = num;
+      while (n > 0) {
+        const mod = (n - 1) % 26;
+        letter = String.fromCharCode(65 + mod) + letter;
+        n = Math.floor((n - 1) / 26);
+      }
+      return letter;
+    }
+
     // Render Unlock (فتح قفل السيارة) as a separate service
     function renderLockInterface() {
       const contentArea = document.getElementById('contentArea');
@@ -3630,10 +5511,11 @@
         
         <div id="mechAppointmentsSection" class="data-table-container hidden" style="margin-top:12px; grid-column: 1 / -1;">
           <div class="table-header">مواعيد الميكانيكية</div>
-          <div style="display:flex;gap:8px;align-items:center;margin:8px 0;">
-            <div>
+          <div style="display:flex;gap:8px;align-items:flex-end;margin:8px 0;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
               <label style="color:#fff;">التاريخ</label>
-              <input type="date" id="mechApptDate" class="form-control" style="max-width:160px;" />
+              <div id="mechDatePicker" class="date-picker"></div>
+              <input type="date" id="mechApptDate" class="form-control" style="max-width:160px; display:none;" />
             </div>
             <div>
               <label style="color:#fff;">الفني</label>
@@ -4079,7 +5961,7 @@
     // Load and render mechanical appointments from external Google Sheet (مواعيد الميكانيكيه)
     async function loadMechanicalAppointmentsData() {
       try {
-        const sheetId = '1CPGWPsJ3lFdYkV2DMWmJef5yw7QBimoTruBw-ef1Dq4';
+        const sheetId = '1tuD10Lf1IEhVKFgZJyK2iSydfsPB-PJFFGaX8Ehoyv0';
         const sheetName = 'مواعيد الميكانيكيه';
         const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
         const res = await fetch(csvUrl);
@@ -4109,6 +5991,138 @@
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
+    }
+
+    function getInputDateValue(input) {
+      if (!input) return '';
+      const value = (input.value || '').toString().trim();
+      if (!value) return '';
+      if (input.type === 'datetime-local') return value.split('T')[0] || '';
+      return value;
+    }
+
+    function setInputDateValue(input, dateStr) {
+      if (!input || !dateStr) return;
+      if (input.type === 'datetime-local') {
+        const timePart = (input.value || '').split('T')[1] || getRoundedNowIso().split('T')[1];
+        input.value = `${dateStr}T${timePart}`;
+      } else {
+        input.value = dateStr;
+      }
+    }
+
+    function formatDateCardLabel(date) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+
+      const d = new Date(date);
+      d.setHours(0, 0, 0, 0);
+
+      const isToday = d.getTime() === today.getTime();
+      const isTomorrow = d.getTime() === tomorrow.getTime();
+
+      const title = isToday ? 'اليوم' : (isTomorrow ? 'غدا' : d.toLocaleDateString('ar-KW', { weekday: 'short' }));
+      const subtitle = d.toLocaleDateString('ar-KW', { day: '2-digit', month: 'short' });
+
+      return { title, subtitle };
+    }
+
+    function isDateInRange(dateStr, startDate, days) {
+      if (!dateStr) return false;
+      const d = new Date(`${dateStr}T00:00:00`);
+      if (isNaN(d.getTime())) return false;
+      const start = new Date(startDate);
+      start.setHours(0, 0, 0, 0);
+      const end = new Date(start);
+      end.setDate(start.getDate() + days - 1);
+      return d >= start && d <= end;
+    }
+
+    function renderHorizontalDatePicker(container, { selectedDate, days = 14, startDate, onSelect }) {
+      if (!container) return;
+      const base = new Date(startDate || new Date());
+      base.setHours(0, 0, 0, 0);
+      container.innerHTML = '';
+
+      for (let i = 0; i < days; i++) {
+        const d = new Date(base);
+        d.setDate(base.getDate() + i);
+        const iso = getLocalDateString(d);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-card' + (iso === selectedDate ? ' active' : '');
+        btn.dataset.date = iso;
+        const label = formatDateCardLabel(d);
+        btn.innerHTML = `
+          <div style="font-size:12px; font-weight:800;">${label.title}</div>
+          <div style="font-size:11px; color:#999; margin-top:2px;">${label.subtitle}</div>
+        `;
+        btn.onclick = () => {
+          setActiveDateCard(container, iso);
+          if (typeof onSelect === 'function') onSelect(iso);
+        };
+
+        container.appendChild(btn);
+      }
+
+      const active = container.querySelector('.date-card.active');
+      if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    function setActiveDateCard(container, dateStr) {
+      if (!container) return;
+      container.querySelectorAll('.date-card').forEach(card => {
+        card.classList.toggle('active', card.dataset.date === dateStr);
+      });
+      const active = container.querySelector('.date-card.active');
+      if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    function setupHorizontalDatePicker({ containerId, inputId, onDateChange, days = 14, triggerOnInit = false }) {
+      const container = document.getElementById(containerId);
+      const input = document.getElementById(inputId);
+      if (!container || !input) return;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const selectedDate = getInputDateValue(input) || getLocalDateString(today);
+      const startDate = isDateInRange(selectedDate, today, days) ? today : new Date(`${selectedDate}T00:00:00`);
+
+      renderHorizontalDatePicker(container, {
+        selectedDate,
+        days,
+        startDate,
+        onSelect: (dateStr) => {
+          setInputDateValue(input, dateStr);
+          if (typeof onDateChange === 'function') onDateChange(dateStr);
+        }
+      });
+
+      input.onchange = () => {
+        const newDate = getInputDateValue(input);
+        if (!newDate) return;
+        if (!container.querySelector(`[data-date="${newDate}"]`)) {
+          renderHorizontalDatePicker(container, {
+            selectedDate: newDate,
+            days,
+            startDate: new Date(`${newDate}T00:00:00`),
+            onSelect: (dateStr) => {
+              setInputDateValue(input, dateStr);
+              if (typeof onDateChange === 'function') onDateChange(dateStr);
+            }
+          });
+        } else {
+          setActiveDateCard(container, newDate);
+        }
+        if (typeof onDateChange === 'function') onDateChange(newDate);
+      };
+
+      if (triggerOnInit && typeof onDateChange === 'function') {
+        onDateChange(selectedDate);
+      }
     }
 
     function parseCellDate(cell) {
@@ -4167,15 +6181,9 @@
         const filtered = dataRows.filter(r => {
           // Check if row has data (not empty)
           if (!r[0] && !r[1] && !r[2]) return false;
-          
-          const dateCell = parseCellDate(r[0]); // column A -> index 0 (التاريخ)
-          // If date parsing fails but row has data, still include it
-          if (!dateCell && r[0]) {
-            // If manually entered, try to compare as string
-            if ((r[0] || '').trim() !== selectedDate) return false;
-          } else if (dateCell && dateCell !== selectedDate) {
-            return false;
-          }
+
+          const dateCell = normalizeDateStr(r[0]); // normalize to YYYY-MM-DD
+          if (dateCell && dateCell !== selectedDate) return false;
           
           if (selectedTech && (r[6] || '') !== selectedTech) return false;
           return true;
@@ -4186,8 +6194,8 @@
         } else {
           tableBody.innerHTML = filtered.map(r => `
             <tr>
-              <td>${r[0] || '-'}</td>
-              <td>${r[1] || '-'}</td>
+              <td>${normalizeDateStr(r[0]) || '-'}</td>
+              <td>${normalizeTimeStr(r[1]) || '-'}</td>
               <td>${r[2] || '-'}</td>
               <td>${r[3] || '-'}</td>
               <td>${r[4] || '-'}</td>
@@ -4199,15 +6207,21 @@
       }
 
       // attach handlers
-      dateInput.onchange = filterAndRender;
       techFilter.onchange = filterAndRender;
+
+      setupHorizontalDatePicker({
+        containerId: 'mechDatePicker',
+        inputId: 'mechApptDate',
+        onDateChange: () => filterAndRender(),
+        days: 14
+      });
 
       document.getElementById('mechRegisterBtn').onclick = () => {
         openMechanicalModal();
       };
 
       document.getElementById('mechEditBtn').onclick = () => {
-        window.open('https://docs.google.com/spreadsheets/d/1CPGWPsJ3lFdYkV2DMWmJef5yw7QBimoTruBw-ef1Dq4/edit?usp=sharing', '_blank');
+        window.open('https://docs.google.com/spreadsheets/d/1tuD10Lf1IEhVKFgZJyK2iSydfsPB-PJFFGaX8Ehoyv0/edit#gid=0', '_blank');
       };
 
       const scheduleAutoRefresh = () => {
@@ -4225,6 +6239,23 @@
       section.classList.remove('hidden');
       filterAndRender();
       scheduleAutoRefresh();
+    }
+
+    function setupCarWashAppointmentsUI() {
+      const appointmentDateTime = document.getElementById('appointmentDateTime');
+      if (!appointmentDateTime) return;
+
+      prepareDateTimeInput(appointmentDateTime);
+      const selectedDate = getInputDateValue(appointmentDateTime) || getLocalDateString(new Date());
+      setInputDateValue(appointmentDateTime, selectedDate);
+
+      loadCarWashAppointments(selectedDate);
+      setupHorizontalDatePicker({
+        containerId: 'carWashDatePicker',
+        inputId: 'appointmentDateTime',
+        onDateChange: (dateStr) => loadCarWashAppointments(dateStr),
+        days: 14
+      });
     }
 
     function calculateAlternatorPrice() {
@@ -4305,6 +6336,10 @@
         <div id="appointmentSection" class="form-section full-width">
           <h3 class="section-title">اختيار الموعد</h3>
           <div class="form-field">
+            <label>التاريخ</label>
+            <div id="carWashDatePicker" class="date-picker"></div>
+          </div>
+          <div class="form-field" style="display:none;">
             <label>تاريخ ووقت الموعد</label>
             <input type="datetime-local" id="appointmentDateTime" class="form-control datetime-control" style="max-width: 280px;">
           </div>
@@ -4341,17 +6376,7 @@
       }
 
       // initialize appointment date and load slots immediately (no need to click a wash)
-      (function initAppointments() {
-        const appointmentDateTime = document.getElementById('appointmentDateTime');
-        if (!appointmentDateTime) return;
-        prepareDateTimeInput(appointmentDateTime);
-        const dateOnly = (appointmentDateTime.value || '').split('T')[0] || getLocalDateString(new Date());
-        loadCarWashAppointments(dateOnly);
-        appointmentDateTime.onchange = () => {
-          const selectedDate = (appointmentDateTime.value || '').split('T')[0];
-          if (selectedDate) loadCarWashAppointments(selectedDate);
-        };
-      })();
+      setupCarWashAppointmentsUI();
 
       document.querySelectorAll('[data-wash]').forEach(btn => {
         btn.onclick = () => {
@@ -4425,17 +6450,7 @@
       
       document.getElementById('appointmentSection').classList.remove('hidden');
       
-      const appointmentDateTime = document.getElementById('appointmentDateTime');
-      if (appointmentDateTime) {
-        prepareDateTimeInput(appointmentDateTime);
-        const selectedDate = (appointmentDateTime.value || '').split('T')[0];
-        const fallbackDate = getLocalDateString(new Date());
-        loadCarWashAppointments(selectedDate || fallbackDate);
-        appointmentDateTime.onchange = () => {
-          const dateOnly = (appointmentDateTime.value || '').split('T')[0];
-          if (dateOnly) loadCarWashAppointments(dateOnly);
-        };
-      }
+      setupCarWashAppointmentsUI();
     }
 
     window.copyWashDetails = async function(type) {
@@ -4639,7 +6654,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
           }
         }
         
-        calculateAvailableSlots(selectedDate);
+        await calculateAvailableSlots(selectedDate);
         return carWashData;
         
       } catch (error) {
@@ -4649,26 +6664,78 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       }
     }
 
-    function calculateAvailableSlots(selectedDate) {
+    async function getWashBusDutyWindow(selectedDate) {
+      try {
+        await loadDriverStatusData();
+      } catch (e) {}
+
+      const rows = window._driverStatusRows || [];
+      const dateObj = new Date(`${selectedDate}T00:00:00`);
+      if (isNaN(dateObj.getTime())) return null;
+
+      const washRows = rows.filter(r => (r.type || '').toString().trim().toUpperCase() === 'WASH BUS');
+      if (!washRows.length) return { missing: true };
+
+      const windows = [];
+      washRows.forEach(r => {
+        if (isOffToday(r, dateObj)) return;
+        const shiftStart = parseShiftTimeToDate(r.shiftRaw, r.shiftDisplay, dateObj);
+        if (!shiftStart) return;
+        const start = new Date(shiftStart);
+        const end = addHours(start, 12);
+        windows.push({ start, end });
+      });
+
+      if (!windows.length) return { off: true };
+
+      const earliestStart = windows.reduce((a, b) => (a.start < b.start ? a : b)).start;
+      const latestEnd = windows.reduce((a, b) => (a.end > b.end ? a : b)).end;
+      return { start: earliestStart, end: latestEnd };
+    }
+
+    async function calculateAvailableSlots(selectedDate) {
       const availableSlots = document.getElementById('availableSlots');
       
       const dateObj = new Date(selectedDate + 'T00:00:00');
       const dayOfWeek = dateObj.toLocaleDateString('ar-EG', { weekday: 'long' });
       const formattedDate = dateObj.toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
       
-      const dayIndex = dateObj.getDay();
-      const startOfYear = new Date(dateObj.getFullYear(), 0, 1);
-      const days = Math.floor((dateObj - startOfYear) / (24 * 60 * 60 * 1000));
-      const weekNumber = Math.ceil((days + startOfYear.getDay() + 1) / 7);
-      
-      if (dayIndex === 5 && weekNumber % 2 === 1) {
+      const formatMinutesToTime = (minutes) => {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        const period = hours >= 12 ? 'مساءً' : 'صباحاً';
+        const displayHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+        return mins === 0 ? `${displayHours} ${period}` : `${displayHours}:${String(mins).padStart(2, '0')} ${period}`;
+      };
+
+      let workStartMinutes = 630; // 10:30 AM
+      let workEndMinutes = 1320;  // 10:00 PM
+
+      const duty = await getWashBusDutyWindow(selectedDate);
+      if (duty && duty.off) {
         availableSlots.innerHTML = `
           <div class="error-box">
-            <strong>❌ مغلق يوم الجمعة</strong><br>
-            أقرب موعد متاح: يوم السبت
+            <strong>❌ لا يوجد دوام لباص الغسيل بهذا اليوم</strong><br>
+            يرجى اختيار يوم آخر
           </div>
         `;
         return;
+      }
+
+      if (duty && duty.start && duty.end) {
+        const dayStart = new Date(dateObj);
+        dayStart.setHours(0, 0, 0, 0);
+
+        const startDiff = Math.round((duty.start - dayStart) / 60000);
+        const endDiff = Math.round((duty.end - dayStart) / 60000);
+
+        workStartMinutes = Math.max(0, Math.min(24 * 60, startDiff));
+        workEndMinutes = Math.max(0, Math.min(24 * 60, endDiff));
+
+        if (workEndMinutes <= workStartMinutes) {
+          workStartMinutes = 630;
+          workEndMinutes = 1320;
+        }
       }
       
       const todayAppointments = carWashData.filter(apt => apt.date === selectedDate);
@@ -4685,14 +6752,20 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
         </div>
       `;
       
-      const workStartMinutes = 630; // 10:30 AM
+      const washDurations = {
+        premium: 60,
+        special: 120,
+        ultra: 180
+      };
+
+      const travelTime = 30;
+
       // Last allowed START time (آخر وصول) per wash type
       const washLastArrival = {
-        premium: 20 * 60 + 30, // 20:30
-        special: 19 * 60 + 30, // 19:30
-        ultra: 18 * 60 + 30    // 18:30
+        premium: Math.max(workStartMinutes, workEndMinutes - washDurations.premium - travelTime),
+        special: Math.max(workStartMinutes, workEndMinutes - washDurations.special - travelTime),
+        ultra: Math.max(workStartMinutes, workEndMinutes - washDurations.ultra - travelTime)
       };
-      const workEndMinutes = 1320;  // 10:00 PM (fallback, not used for per-wash limits)
       
       const today = new Date();
       const isToday = dateObj.getDate() === today.getDate() && 
@@ -4729,13 +6802,6 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       appointments.sort((a, b) => a.start - b.start);
       
       const selectedWashes = formData.selectedWashes || [];
-      const washDurations = {
-        premium: 60,
-        special: 120,
-        ultra: 180
-      };
-      
-      const travelTime = 30;
       
         // Find all available time slots for each wash type
       const availableTimeSlots = {};
@@ -4810,7 +6876,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
         html += `
           <div class="warning-box">
             <strong>⚠️ لا يوجد وقت كافٍ لأي نوع غسيل محدد اليوم</strong><br>
-            ساعات العمل تنتهي الساعة 10:00 مساءً
+            ساعات العمل تنتهي الساعة ${formatMinutesToTime(workEndMinutes)}
           </div>
         `;
         
@@ -4821,9 +6887,9 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
         html += `
           <div class="info-box" style="background: #1a4a2a; border-color: #10b981; margin-top: 10px;">
             <div style="font-size: 12px; font-weight: 700; color: #10b981; margin-bottom: 6px;">💡 اقتراح: ${tomorrowDay}</div>
-            <div style="font-size: 11px; color: #10b981; margin: 3px 0;">⭐ غسيل ممتاز: ابتداءً من 10:30 صباحاً</div>
-            <div style="font-size: 11px; color: #10b981; margin: 3px 0;">💎 غسيل خصوصي: ابتداءً من 10:30 صباحاً</div>
-            <div style="font-size: 11px; color: #10b981; margin: 3px 0;">👑 غسيل ألترا: ابتداءً من 10:30 صباحاً</div>
+            <div style="font-size: 11px; color: #10b981; margin: 3px 0;">⭐ غسيل ممتاز: ابتداءً من ${formatMinutesToTime(workStartMinutes)}</div>
+            <div style="font-size: 11px; color: #10b981; margin: 3px 0;">💎 غسيل خصوصي: ابتداءً من ${formatMinutesToTime(workStartMinutes)}</div>
+            <div style="font-size: 11px; color: #10b981; margin: 3px 0;">👑 غسيل ألترا: ابتداءً من ${formatMinutesToTime(workStartMinutes)}</div>
           </div>
         `;
       } else {
@@ -4833,18 +6899,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
         `;
         
         // Helper function to format time
-        const formatTimeSimple = (minutes) => {
-          const hours = Math.floor(minutes / 60);
-          const mins = minutes % 60;
-          const period = hours >= 12 ? 'مساءً' : 'صباحاً';
-          const displayHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
-          
-          if (mins === 0) {
-            return `${displayHours} ${period}`;
-          } else {
-            return `${displayHours}:${mins.toString().padStart(2, '0')} ${period}`;
-          }
-        };
+        const formatTimeSimple = (minutes) => formatMinutesToTime(minutes);
         
         // Helper to format time range - show actual available window (earliest start -> latest allowed start)
         const formatTimeRange = (slots, washDuration, washType) => {
@@ -5017,7 +7072,7 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
 
     // Shared helpers for local booking (carwash/mechanical)
     const SHEETDB_URL = 'https://sheetdb.io/api/v1/wvoh60e0yhry4'; // Car Wash API
-    const MECHANICAL_SHEETDB_URL = 'https://sheetdb.io/api/v1/jcvn1kw9zy7o7'; // Mechanical API
+    const MECHANICAL_SHEETDB_URL = 'https://sheetdb.io/api/v1/i0hw3fbd5a92i'; // Mechanical API
 
     function pickHeader(headerRow, candidates, fallback) {
       const headers = (headerRow || []).map(h => (h || '').toString().toLowerCase().trim());
@@ -5170,8 +7225,6 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       overlay.querySelector('.modal-close').onclick = closeOverlay;
       overlay.querySelector('#cwCancel').onclick = closeOverlay;
       overlay.querySelector('#cwSubmit').onclick = handleCarWashSubmit;
-
-      prepareDateTimeInput(overlay.querySelector('#cwDatetime'));
       return overlay;
     }
 
@@ -5199,11 +7252,9 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
     function openCarWashModal() {
       const overlay = ensureCarWashModal();
       const datetimeInput = overlay.querySelector('#cwDatetime');
-      const mainPicker = document.getElementById('appointmentDateTime');
-      const baseValue = mainPicker?.value || getRoundedNowIso();
-      datetimeInput.value = baseValue;
+      datetimeInput.value = '';
       datetimeInput.min = getRoundedNowIso();
-      prepareDateTimeInput(datetimeInput);
+      blockManualInput(datetimeInput);
 
       const washSelect = overlay.querySelector('#cwWashType');
       const selectedWash = (formData.selectedWashes && formData.selectedWashes[0]) || 'premium';
@@ -5383,8 +7434,6 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       };
       serviceSelect.onchange = toggleOtherField;
       overlay._toggleMechOther = toggleOtherField;
-
-      prepareDateTimeInput(overlay.querySelector('#mechDatetime'));
       return overlay;
     }
 
@@ -5396,8 +7445,8 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       // If header is available, use it to build the row dynamically
       if (header.length >= 7) {
         const row = {};
-        row[header[0]] = payload.date;        // Column A: تاريخ الموعد
-        row[header[1]] = payload.time;        // Column B: وقت الموعد
+        row[header[0]] = asSheetText(payload.date);        // Column A: تاريخ الموعد
+        row[header[1]] = asSheetText(payload.time);        // Column B: وقت الموعد
         row[header[2]] = payload.qrOrder;     // Column C: رقم الطلب
         row[header[3]] = payload.customerName; // Column D: اسم العميل
         row[header[4]] = payload.area;        // Column E: المنطقة
@@ -5409,14 +7458,55 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       // Fallback: use expected column names
       // Order: A=تاريخ الموعد, B=وقت الموعد, C=رقم الطلب, D=اسم العميل, E=المنطقة, F=نوع الخدمة, G=الفنيين
       return {
-        'تاريخ الموعد': payload.date,
-        'وقت الموعد': payload.time,
+        'تاريخ الموعد': asSheetText(payload.date),
+        'وقت الموعد': asSheetText(payload.time),
         'رقم الطلب': payload.qrOrder,
         'اسم العميل': payload.customerName,
         'المنطقة': payload.area,
         'نوع الخدمة': payload.service,
         'الفنيين': payload.technician
       };
+    }
+
+    function getMechanicTechnicianName(row) {
+      return (row.nameAr || row.nameEn || '').toString().trim();
+    }
+
+    async function populateMechanicalTechniciansForDate(dateStr) {
+      try {
+        await loadDriverStatusData();
+      } catch (e) {}
+
+      const select = document.getElementById('mechTechnician');
+      if (!select) return;
+
+      const rows = window._driverStatusRows || [];
+      const targetDate = dateStr ? new Date(`${dateStr}T00:00:00`) : null;
+      const techs = rows
+        .filter(r => (r.type || '').toString().trim().toUpperCase() === 'MECHANIC BUS')
+        .map(r => {
+          const name = getMechanicTechnicianName(r);
+          const off = targetDate ? isOffToday(r, targetDate) : false;
+          return { name, off };
+        })
+        .filter(t => t.name);
+
+      const unique = new Map();
+      techs.forEach(t => {
+        if (!unique.has(t.name)) unique.set(t.name, t.off);
+      });
+
+      const options = Array.from(unique.entries()).map(([name, off]) => {
+        const label = off ? `${name} (اجازه)` : name;
+        return { value: name, label };
+      });
+
+      if (options.length === 0) {
+        select.innerHTML = '<option value="">لا يوجد فنيين</option>';
+        return;
+      }
+
+      select.innerHTML = options.map(o => `<option value="${escapeHtml(o.value)}">${escapeHtml(o.label)}</option>`).join('');
     }
 
     async function openMechanicalModal() {
@@ -5428,9 +7518,9 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       
       const overlay = ensureMechanicalModal();
       const datetimeInput = overlay.querySelector('#mechDatetime');
-      datetimeInput.value = getRoundedNowIso();
+      datetimeInput.value = '';
       datetimeInput.min = getRoundedNowIso();
-      prepareDateTimeInput(datetimeInput);
+      blockManualInput(datetimeInput);
 
       const mechServiceLabels = {
         inspection: 'فحص السيارة',
@@ -5452,9 +7542,22 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
       overlay.querySelector('#mechOrder').value = '';
       overlay.querySelector('#mechCustomer').value = '';
       overlay.querySelector('#mechArea').value = '';
-      overlay.querySelector('#mechTechnician').value = 'يوسف و رحمه الله';
+      await populateMechanicalTechniciansForDate('');
+      datetimeInput.onchange = () => {
+        const dateOnly = normalizeDateStr(datetimeInput.value || '');
+        populateMechanicalTechniciansForDate(dateOnly);
+      };
       if (overlay._toggleMechOther) overlay._toggleMechOther();
       if (otherInput) otherInput.value = '';
+
+      const submitBtn = overlay.querySelector('#mechSubmit');
+      const cancelBtn = overlay.querySelector('#mechCancel');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.textContent = 'حفظ الموعد';
+      }
+      if (cancelBtn) cancelBtn.disabled = false;
 
       setModalMessage(overlay.querySelector('#mechMessage'), '', '');
       overlay.classList.remove('hidden');
@@ -5493,7 +7596,11 @@ ${wash.services.map(s => `• ${s}`).join('\n')}
 
       const rows = window._mechAppointmentsRaw || await loadMechanicalAppointmentsData();
       const dataRows = (rows || []).slice(1);
-      const conflict = dataRows.some(r => normalizeDateStr(r[0]) === dateOnly && normalizeTimeStr(r[1]) === timeOnly);
+      const conflict = dataRows.some(r =>
+        normalizeDateStr(r[0]) === dateOnly &&
+        normalizeTimeStr(r[1]) === timeOnly &&
+        (r[6] || '') === techVal
+      );
       if (conflict) {
         setModalMessage(message, 'error', 'هذا الوقت محجوز بالفعل. يرجى اختيار وقت آخر.');
         return;
